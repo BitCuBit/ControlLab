@@ -1,14 +1,14 @@
 //
-//  AppDelegate.h
+//  ControlLabAppDelegate.h
 //  ControlLab
 //
-//  Created by Pablo Casado Varela on 22/03/13.
+//  Created by Pablo Casado Varela on 13/02/13.
 //  Copyright (c) 2013 Pablo Casado Varela. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface ControlLabAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
