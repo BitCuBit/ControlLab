@@ -35,6 +35,7 @@
 		5383948A16D3C51100BEA478 /* ControlViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5383948916D3C51100BEA478 /* ControlViewController.mm */; };
 		539C566B16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */; };
 		539C566D16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */; };
+		53FB816E1700452B0088E71E /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB816D1700452B0088E71E /* exit.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		5383948916D3C51100BEA478 /* ControlViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ControlViewController.mm; path = ../ControlViewController.mm; sourceTree = "<group>"; };
 		539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPad.png; sourceTree = "<group>"; };
 		539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPhone.png; sourceTree = "<group>"; };
+		53FB816D1700452B0088E71E /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		533451C816CCF4C300658AFB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53FB816D1700452B0088E71E /* exit.png */,
 				535D9BF016FB2FE600CC330C /* key.png */,
 				535D9BEC16FB2F1200CC330C /* house.png */,
 				539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */,
@@ -266,6 +269,7 @@
 				539C566D16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png in Resources */,
 				535D9BED16FB2F1200CC330C /* house.png in Resources */,
 				535D9BF116FB2FE600CC330C /* key.png in Resources */,
+				53FB816E1700452B0088E71E /* exit.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
