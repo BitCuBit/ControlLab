@@ -357,7 +357,9 @@ static const SceneVertex doorA [] = {
     ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
-    [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 200) inView:self.view permittedArrowDirections: 0 animated:YES];
+    popover.popoverContentSize = CGSizeMake(300, 600);
+    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
+
     [self stopGyroscope];
 
 
@@ -367,7 +369,8 @@ static const SceneVertex doorA [] = {
     ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] initWithNibName:nil bundle:nil];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
-    [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 200) inView:self.view permittedArrowDirections: 0 animated:YES];
+    popover.popoverContentSize = CGSizeMake(300, 600);
+    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
     [self stopGyroscope];
 }
 

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface ControlLabkDoorViewController : UIViewController
+#import <QuartzCore/QuartzCore.h>
+#import "ControlLabBackgroundLayer.h"
+
+
+@interface ControlLabkDoorViewController : UIViewController <UIWebViewDelegate>
 
 
 - (IBAction)flip:(id)sender;

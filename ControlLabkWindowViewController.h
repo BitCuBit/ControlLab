@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ControlLabBackgroundLayer.h"
 
-@interface ControlLabkWindowViewController : UIViewController
+@interface ControlLabkWindowViewController : UIViewController <UIWebViewDelegate>
 
 
 - (IBAction)flip:(id)sender;
