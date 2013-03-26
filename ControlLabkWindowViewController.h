@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ControlLabBackgroundLayer.h"
+#import "ControlLabWebViewDevice.h"
 
 @interface ControlLabkWindowViewController : UIViewController <UIWebViewDelegate>
 

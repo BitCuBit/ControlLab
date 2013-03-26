@@ -39,6 +39,7 @@
 		53DA2FBE17019FB500D9F167 /* ControlLabkWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */; };
 		53DA2FC21701C31300D9F167 /* backgroundPopover.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DA2FC11701C31300D9F167 /* backgroundPopover.png */; };
 		53DA2FC71701D48600D9F167 /* ControlLabBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FC61701D48600D9F167 /* ControlLabBackgroundLayer.m */; };
+		53DA2FCB1701F30100D9F167 /* ControlLabWebViewDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FCA1701F30100D9F167 /* ControlLabWebViewDevice.m */; };
 		53FB816E1700452B0088E71E /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB816D1700452B0088E71E /* exit.png */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,8 @@
 		53DA2FC11701C31300D9F167 /* backgroundPopover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundPopover.png; sourceTree = "<group>"; };
 		53DA2FC51701D48600D9F167 /* ControlLabBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabBackgroundLayer.h; sourceTree = "<group>"; };
 		53DA2FC61701D48600D9F167 /* ControlLabBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabBackgroundLayer.m; sourceTree = "<group>"; };
+		53DA2FC91701F30100D9F167 /* ControlLabWebViewDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabWebViewDevice.h; sourceTree = "<group>"; };
+		53DA2FCA1701F30100D9F167 /* ControlLabWebViewDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabWebViewDevice.m; sourceTree = "<group>"; };
 		53FB816D1700452B0088E71E /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +144,8 @@
 		536683E716CBEE71009AA68B = {
 			isa = PBXGroup;
 			children = (
+				53DA2FC91701F30100D9F167 /* ControlLabWebViewDevice.h */,
+				53DA2FCA1701F30100D9F167 /* ControlLabWebViewDevice.m */,
 				53DA2FC81701DED200D9F167 /* CustomElements */,
 				53338FF516DCFBF40089979C /* ViewControllerDevice */,
 				531266F716D4FDB400FE71DE /* Devices */,
@@ -331,6 +336,7 @@
 				53DA2FBB17019DF700D9F167 /* ControlLabkDoorViewController.m in Sources */,
 				53DA2FBE17019FB500D9F167 /* ControlLabkWindowViewController.m in Sources */,
 				53DA2FC71701D48600D9F167 /* ControlLabBackgroundLayer.m in Sources */,
+				53DA2FCB1701F30100D9F167 /* ControlLabWebViewDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "ControlLabBackgroundLayer.h"
+#import "ControlLabWebViewDevice.h"
 
 
 @interface ControlLabkDoorViewController : UIViewController <UIWebViewDelegate>

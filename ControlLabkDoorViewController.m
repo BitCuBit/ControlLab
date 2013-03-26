@@ -58,21 +58,8 @@
         [label4 setTextAlignment: NSTextAlignmentRight];
 
         // WEB VIEW
-        UIWebView *aWebView =[[UIWebView alloc] initWithFrame:CGRectMake(25,250,250,275)];
+        ControlLabWebViewDevice *aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,250,250,275)];
         aWebView.delegate = self;
-        NSString *fullURL = @"http://web.ua.es/es/dai/dai-virtual-lab.html";
-        NSURL *url = [NSURL URLWithString:fullURL];
-        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-        // Round corners using CALayer property
-        [[aWebView layer] setCornerRadius:10];
-        [aWebView setClipsToBounds:YES];
-
-        // Create colored border using CALayer property
-        [[aWebView layer] setBorderColor:
-         [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
-        [[aWebView layer] setBorderWidth:2.75];
-        [aWebView loadRequest:requestObj];
-
 
         // ADD ELEMENTS TO VIEW
         [self.view addSubview:label1];
