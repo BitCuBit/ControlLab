@@ -356,8 +356,9 @@ static const SceneVertex doorA [] = {
 - (void) drawInterfaceDeviceDoor {
     ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
-    [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 60) inView:self.view permittedArrowDirections: UIPopoverArrowDirectionDown animated:YES];
-
+    popover.delegate = self;
+    [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 200) inView:self.view permittedArrowDirections: 0 animated:YES];
+    [self stopGyroscope];
 
 
 }
@@ -365,19 +366,27 @@ static const SceneVertex doorA [] = {
 - (void) drawInterfaceDeviceWindow {
     ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] initWithNibName:nil bundle:nil];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
-    [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 60) inView:self.view permittedArrowDirections: UIPopoverArrowDirectionDown animated:YES];
-    
+    popover.delegate = self;
+    [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 200) inView:self.view permittedArrowDirections: 0 animated:YES];
+    [self stopGyroscope];
 }
 
 
 
+-(void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    NSLog(@"Popover dismissed");
+    [self loadGyroscope];
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
     factor = 0.0;
     factorUpDown = 0.0;
+
+    mm = [[CMMotionManager alloc] init];
 
     GLKView *view = (GLKView *)self.view;
     NSAssert([view isKindOfClass:[GLKView class]], @"View Controller´s view is not a GLKView");
@@ -391,6 +400,7 @@ static const SceneVertex doorA [] = {
 
 
     [self loadTextures];
+    
     [self loadGyroscope];
     // Añado reconocimiento de arrastre de imagen
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
@@ -400,12 +410,11 @@ static const SceneVertex doorA [] = {
     [self.view addGestureRecognizer:tapGesture];
 }
 
-
 #pragma mark - Gyroscope Inicializa la carga de los datos del giroscopio
 
 - (void) loadGyroscope {
 
-    mm = [[CMMotionManager alloc] init];
+
     if ([mm isGyroAvailable]) {
         if ([mm isGyroActive] == NO) {
             [mm setGyroUpdateInterval:1.0f / kAccelerometerFrequency];
@@ -445,6 +454,11 @@ static const SceneVertex doorA [] = {
     }
 
 
+}
+
+- (void) stopGyroscope{
+    [mm stopGyroUpdates];
+    
 }
 
 

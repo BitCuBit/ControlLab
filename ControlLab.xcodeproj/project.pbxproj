@@ -37,6 +37,7 @@
 		539C566D16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */; };
 		53DA2FBB17019DF700D9F167 /* ControlLabkDoorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */; };
 		53DA2FBE17019FB500D9F167 /* ControlLabkWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */; };
+		53DA2FC21701C31300D9F167 /* backgroundPopover.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DA2FC11701C31300D9F167 /* backgroundPopover.png */; };
 		53FB816E1700452B0088E71E /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB816D1700452B0088E71E /* exit.png */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkDoorViewController.m; sourceTree = "<group>"; };
 		53DA2FBC17019FB500D9F167 /* ControlLabkWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkWindowViewController.h; sourceTree = "<group>"; };
 		53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkWindowViewController.m; sourceTree = "<group>"; };
+		53DA2FC11701C31300D9F167 /* backgroundPopover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundPopover.png; sourceTree = "<group>"; };
 		53FB816D1700452B0088E71E /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 		533451C816CCF4C300658AFB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53DA2FC11701C31300D9F167 /* backgroundPopover.png */,
 				53DA2FB8170194A500D9F167 /* Textures */,
 				53DA2FB71701949300D9F167 /* Icons */,
 				539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */,
@@ -296,6 +299,7 @@
 				535D9BED16FB2F1200CC330C /* house.png in Resources */,
 				535D9BF116FB2FE600CC330C /* key.png in Resources */,
 				53FB816E1700452B0088E71E /* exit.png in Resources */,
+				53DA2FC21701C31300D9F167 /* backgroundPopover.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

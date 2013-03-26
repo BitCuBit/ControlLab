@@ -22,7 +22,7 @@
 #import "ControlLabkWindowViewController.h"
 
 
-@interface ControlViewController : GLKViewController<GLKViewControllerDelegate,GLKViewDelegate> {
+@interface ControlViewController : GLKViewController<GLKViewControllerDelegate,GLKViewDelegate, UIPopoverControllerDelegate> {
     GLuint vertexBuffer;
     GLuint indexBuffer[6];
     GLuint colorBuffer;
