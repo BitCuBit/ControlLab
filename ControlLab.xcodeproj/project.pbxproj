@@ -144,8 +144,6 @@
 		536683E716CBEE71009AA68B = {
 			isa = PBXGroup;
 			children = (
-				53DA2FC91701F30100D9F167 /* ControlLabWebViewDevice.h */,
-				53DA2FCA1701F30100D9F167 /* ControlLabWebViewDevice.m */,
 				53DA2FC81701DED200D9F167 /* CustomElements */,
 				53338FF516DCFBF40089979C /* ViewControllerDevice */,
 				531266F716D4FDB400FE71DE /* Devices */,
@@ -242,6 +240,8 @@
 		53DA2FC81701DED200D9F167 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
+				53DA2FC91701F30100D9F167 /* ControlLabWebViewDevice.h */,
+				53DA2FCA1701F30100D9F167 /* ControlLabWebViewDevice.m */,
 				53DA2FC51701D48600D9F167 /* ControlLabBackgroundLayer.h */,
 				53DA2FC61701D48600D9F167 /* ControlLabBackgroundLayer.m */,
 			);
