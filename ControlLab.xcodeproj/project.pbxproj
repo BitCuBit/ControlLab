@@ -35,6 +35,8 @@
 		5383948A16D3C51100BEA478 /* ControlViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5383948916D3C51100BEA478 /* ControlViewController.mm */; };
 		539C566B16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */; };
 		539C566D16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */; };
+		53DA2FBB17019DF700D9F167 /* ControlLabkDoorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */; };
+		53DA2FBE17019FB500D9F167 /* ControlLabkWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */; };
 		53FB816E1700452B0088E71E /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB816D1700452B0088E71E /* exit.png */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,10 @@
 		5383948916D3C51100BEA478 /* ControlViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ControlViewController.mm; path = ../ControlViewController.mm; sourceTree = "<group>"; };
 		539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPad.png; sourceTree = "<group>"; };
 		539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPhone.png; sourceTree = "<group>"; };
+		53DA2FB917019DF700D9F167 /* ControlLabkDoorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkDoorViewController.h; sourceTree = "<group>"; };
+		53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkDoorViewController.m; sourceTree = "<group>"; };
+		53DA2FBC17019FB500D9F167 /* ControlLabkWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkWindowViewController.h; sourceTree = "<group>"; };
+		53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkWindowViewController.m; sourceTree = "<group>"; };
 		53FB816D1700452B0088E71E /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +113,10 @@
 		53338FF516DCFBF40089979C /* ViewControllerDevice */ = {
 			isa = PBXGroup;
 			children = (
+				53DA2FBC17019FB500D9F167 /* ControlLabkWindowViewController.h */,
+				53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */,
+				53DA2FB917019DF700D9F167 /* ControlLabkDoorViewController.h */,
+				53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */,
 			);
 			name = ViewControllerDevice;
 			sourceTree = "<group>";
@@ -114,17 +124,10 @@
 		533451C816CCF4C300658AFB /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				53FB816D1700452B0088E71E /* exit.png */,
-				535D9BF016FB2FE600CC330C /* key.png */,
-				535D9BEC16FB2F1200CC330C /* house.png */,
+				53DA2FB8170194A500D9F167 /* Textures */,
+				53DA2FB71701949300D9F167 /* Icons */,
 				539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */,
 				539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */,
-				5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */,
-				5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */,
-				5334520516CCFBFD00658AFB /* FRONT_LIGHT_ON.png */,
-				5334520616CCFBFD00658AFB /* LEFT_LIGHT_ON.png */,
-				5334520716CCFBFD00658AFB /* RIGHT_LIGHT_ON.png */,
-				5334520816CCFBFD00658AFB /* TOP_LIGHT_ON.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -199,6 +202,29 @@
 				531266EF16D4D8A600FE71DE /* Project.h */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		53DA2FB71701949300D9F167 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				53FB816D1700452B0088E71E /* exit.png */,
+				535D9BF016FB2FE600CC330C /* key.png */,
+				535D9BEC16FB2F1200CC330C /* house.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		53DA2FB8170194A500D9F167 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */,
+				5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */,
+				5334520516CCFBFD00658AFB /* FRONT_LIGHT_ON.png */,
+				5334520616CCFBFD00658AFB /* LEFT_LIGHT_ON.png */,
+				5334520716CCFBFD00658AFB /* RIGHT_LIGHT_ON.png */,
+				5334520816CCFBFD00658AFB /* TOP_LIGHT_ON.png */,
+			);
+			name = Textures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +311,8 @@
 				5383948A16D3C51100BEA478 /* ControlViewController.mm in Sources */,
 				531266F016D4D8A600FE71DE /* Project.cpp in Sources */,
 				531266FA16D4FE0800FE71DE /* ControlLabNSDevice.mm in Sources */,
+				53DA2FBB17019DF700D9F167 /* ControlLabkDoorViewController.m in Sources */,
+				53DA2FBE17019FB500D9F167 /* ControlLabkWindowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

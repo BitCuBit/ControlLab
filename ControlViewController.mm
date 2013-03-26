@@ -354,52 +354,8 @@ static const SceneVertex doorA [] = {
 }
 
 - (void) drawInterfaceDeviceDoor {
-    UIViewController *vc = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    [vc.view setBackgroundColor:[UIColor whiteColor]];
-
-
-    UIColor *color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.3];
-
-    UILabel *label1 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 50, 200, 30)];
-    [label1 setText:@"Control"];
-    [label1 setBackgroundColor:color];
-    label1.font = [UIFont fontWithName:@"Helvetica-Bold" size: 16.0];
-    [label1 setTextAlignment: NSTextAlignmentCenter];
-
-    UILabel *label2 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 100, 200, 30)];
-    [label2 setText:@"Puerta Principal"];
-    [label2 setBackgroundColor:color];
-    label2.font = [UIFont fontWithName: @"Helvetica-Bold" size: 16.0];
-    [label2 setTextAlignment: NSTextAlignmentCenter];
-
-    onoff = [[UISwitch alloc] initWithFrame: CGRectMake(110, 150, 200, 60)];
-    [onoff addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
-
-    UILabel *label3 = [[UILabel alloc ]initWithFrame:CGRectMake(60, 150, 50, 30)];
-    [label3 setText:@"On"];
-    [label3 setBackgroundColor:[UIColor whiteColor]];
-    label3.font = [UIFont fontWithName:@"Helvetica-Bold" size: 16.0];
-    [label3 setTextAlignment: NSTextAlignmentLeft];
-
-    UILabel *label4 = [[UILabel alloc ]initWithFrame:CGRectMake(190, 150, 50, 30)];
-    [label4 setText:@"Off"];
-    [label4 setBackgroundColor:[UIColor whiteColor]];
-    label4.font = [UIFont fontWithName:@"Helvetica-Bold" size: 16.0];
-    [label4 setTextAlignment: NSTextAlignmentRight];
-
-
-    [vc.view addSubview:label1];
-    [vc.view addSubview:label2];
-    [vc.view addSubview:onoff];
-    [vc.view addSubview:label3];
-    [vc.view addSubview:label4];
-
-
-
-
+    ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
-
-
     [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 60) inView:self.view permittedArrowDirections: UIPopoverArrowDirectionDown animated:YES];
 
 
@@ -407,61 +363,13 @@ static const SceneVertex doorA [] = {
 }
 
 - (void) drawInterfaceDeviceWindow {
-    UIViewController *vc = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    [vc.view setBackgroundColor:[UIColor whiteColor]];
-
-    UIColor *color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.3];
-
-    UILabel *label1 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 50, 200, 30)];
-    [label1 setText:@"Control"];
-    [label1 setBackgroundColor:color];
-    label1.font = [UIFont fontWithName:@"Helvetica-Bold" size: 16.0];
-    [label1 setTextAlignment: NSTextAlignmentCenter];
-
-    UILabel *label2 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 100, 200, 30)];
-    [label2 setText:@"Ventana"];
-    [label2 setBackgroundColor:color];
-    label2.font = [UIFont fontWithName: @"Helvetica-Bold" size: 16.0];
-    [label2 setTextAlignment: NSTextAlignmentCenter];
-
-    onoff = [[UISwitch alloc] initWithFrame: CGRectMake(110, 150, 200, 60)];
-    [onoff addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
-
-    UILabel *label3 = [[UILabel alloc ]initWithFrame:CGRectMake(60, 150, 50, 30)];
-    [label3 setText:@"On"];
-    [label3 setBackgroundColor:[UIColor whiteColor]];
-    label3.font = [UIFont fontWithName:@"Helvetica-Bold" size: 16.0];
-    [label3 setTextAlignment: NSTextAlignmentLeft];
-
-    UILabel *label4 = [[UILabel alloc ]initWithFrame:CGRectMake(190, 150, 50, 30)];
-    [label4 setText:@"Off"];
-    [label4 setBackgroundColor:[UIColor whiteColor]];
-    label4.font = [UIFont fontWithName:@"Helvetica-Bold" size: 16.0];
-    [label4 setTextAlignment: NSTextAlignmentRight];
-
-
-    [vc.view addSubview:label1];
-    [vc.view addSubview:label2];
-    [vc.view addSubview:onoff];
-    [vc.view addSubview:label3];
-    [vc.view addSubview:label4];
-
-    // Incializamos el popover
-
+    ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] initWithNibName:nil bundle:nil];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
-
-
     [popover presentPopoverFromRect:CGRectMake(200, 300, 200, 60) inView:self.view permittedArrowDirections: UIPopoverArrowDirectionDown animated:YES];
     
-    
-    
 }
 
 
-- (IBAction)flip:(id)sender {
-    if (onoff.on) NSLog(@"On");
-    else  NSLog(@"Off");
-}
 
 
 

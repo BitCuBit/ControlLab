@@ -17,6 +17,10 @@
 
 #import "Project.h"
 
+// INTERFACES DEVICES
+#import "ControlLabkDoorViewController.h"
+#import "ControlLabkWindowViewController.h"
+
 
 @interface ControlViewController : GLKViewController<GLKViewControllerDelegate,GLKViewDelegate> {
     GLuint vertexBuffer;
