@@ -29,6 +29,7 @@
     GLuint vertexArray;
     UIPopoverController *popover;
 }
+@property (strong, nonatomic) IBOutlet UIView *viewLayerGL;
 
 @property (strong, nonatomic) GLKBaseEffect *baseEffect;
 @property (strong, nonatomic) GLKView *glView;
