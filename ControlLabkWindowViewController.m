@@ -24,11 +24,9 @@
     if (self) {
         // Custom initialization
 
-        CAGradientLayer *bgLayer = [ControlLabBackgroundLayer blueGradient];
+        CAGradientLayer *bgLayer = [ControlLabBackgroundLayer greyGradient];
         bgLayer.frame = self.view.bounds;
         [self.view.layer insertSublayer:bgLayer atIndex:0];
-
-        [self.view setBackgroundColor:[UIColor whiteColor]];
 
         UIColor *color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0];
 

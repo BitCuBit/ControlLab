@@ -20,6 +20,7 @@
 		535D9BED16FB2F1200CC330C /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 535D9BEC16FB2F1200CC330C /* house.png */; };
 		535D9BF116FB2FE600CC330C /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 535D9BF016FB2FE600CC330C /* key.png */; };
 		536155E01702F1A5005E4D9D /* params.png in Resources */ = {isa = PBXBuildFile; fileRef = 536155DF1702F1A5005E4D9D /* params.png */; };
+		536155E3170318BA005E4D9D /* ControlLabCustomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 536155E2170318BA005E4D9D /* ControlLabCustomToolBar.m */; };
 		536683F416CBEE71009AA68B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536683F316CBEE71009AA68B /* UIKit.framework */; };
 		536683F616CBEE71009AA68B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536683F516CBEE71009AA68B /* Foundation.framework */; };
 		536683F816CBEE71009AA68B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536683F716CBEE71009AA68B /* CoreGraphics.framework */; };
@@ -60,6 +61,8 @@
 		535D9BEC16FB2F1200CC330C /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
 		535D9BF016FB2FE600CC330C /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		536155DF1702F1A5005E4D9D /* params.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = params.png; sourceTree = "<group>"; };
+		536155E1170318BA005E4D9D /* ControlLabCustomToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabCustomToolBar.h; sourceTree = "<group>"; };
+		536155E2170318BA005E4D9D /* ControlLabCustomToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabCustomToolBar.m; sourceTree = "<group>"; };
 		536683F016CBEE71009AA68B /* ControlLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		536683F316CBEE71009AA68B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		536683F516CBEE71009AA68B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -243,6 +246,8 @@
 		53DA2FC81701DED200D9F167 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
+				536155E1170318BA005E4D9D /* ControlLabCustomToolBar.h */,
+				536155E2170318BA005E4D9D /* ControlLabCustomToolBar.m */,
 				53DA2FC91701F30100D9F167 /* ControlLabWebViewDevice.h */,
 				53DA2FCA1701F30100D9F167 /* ControlLabWebViewDevice.m */,
 				53DA2FC51701D48600D9F167 /* ControlLabBackgroundLayer.h */,
@@ -341,6 +346,7 @@
 				53DA2FBE17019FB500D9F167 /* ControlLabkWindowViewController.m in Sources */,
 				53DA2FC71701D48600D9F167 /* ControlLabBackgroundLayer.m in Sources */,
 				53DA2FCB1701F30100D9F167 /* ControlLabWebViewDevice.m in Sources */,
+				536155E3170318BA005E4D9D /* ControlLabCustomToolBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

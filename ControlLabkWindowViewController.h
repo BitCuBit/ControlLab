@@ -13,6 +13,5 @@
 @interface ControlLabkWindowViewController : UIViewController 
 
 
-- (IBAction)flip:(id)sender;
 
 @end

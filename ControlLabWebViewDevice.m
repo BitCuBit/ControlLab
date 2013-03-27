@@ -9,7 +9,9 @@
 #import "ControlLabWebViewDevice.h"
 
 @implementation ControlLabWebViewDevice {
-
+    NSString *fullURL;
+    NSURL *url;
+    NSURLRequest *requestObj;
 }
 
 
@@ -31,9 +33,9 @@
         [[self layer] setBorderWidth:2.75];
 
         
-        NSString *fullURL = @"https://www.dropbox.com/s/l7xlxm9delw88os/web.png";
-        NSURL *url = [NSURL URLWithString:fullURL];
-        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        fullURL = @"https://www.dropbox.com/s/l7xlxm9delw88os/web.png";
+        url = [NSURL URLWithString:fullURL];
+        requestObj = [NSURLRequest requestWithURL:url];
         NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
 
 
@@ -63,11 +65,8 @@
         //Otherwise load webView
     } else {
         // Redundant code
-        NSString *urlAddress = @"https://www.dropbox.com/s/l7xlxm9delw88os/web.png";
-        NSURL *url = [NSURL URLWithString:urlAddress];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
 
-        [self loadRequest:urlRequest];
+        [self loadRequest:requestObj];
         self.hidden = false;
     }
 }

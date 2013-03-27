@@ -20,6 +20,7 @@
 // INTERFACES DEVICES
 #import "ControlLabkDoorViewController.h"
 #import "ControlLabkWindowViewController.h"
+#import "ControlLabCustomToolBar.h"
 
 
 @interface ControlViewController : GLKViewController<GLKViewControllerDelegate,GLKViewDelegate, UIPopoverControllerDelegate> {
