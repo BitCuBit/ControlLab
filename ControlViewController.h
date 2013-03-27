@@ -32,9 +32,11 @@
 
 @property (strong, nonatomic) GLKBaseEffect *baseEffect;
 @property (strong, nonatomic) GLKView *glView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barButtonConfiguration;
 
 - (void) updateFactor:(float)fact;
 - (void) updateFactorUpDown:(float)fact;
 
+- (IBAction)configurationAction:(id)sender;
 
 @end

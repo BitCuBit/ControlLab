@@ -141,6 +141,11 @@ static const SceneVertex doorA [] = {
     }
 }
 
+- (IBAction)configurationAction:(id)sender {
+    NSLog(@"Configuration System");
+}
+
+
 - (void)pan:(UIPanGestureRecognizer *)gesture {
     float x = [gesture locationInView:self.view].x;
     float y = [gesture locationInView:self.view].y;
