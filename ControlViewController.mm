@@ -43,7 +43,7 @@
 
 @synthesize baseEffect;
 @synthesize glView;
-@synthesize viewLayerGL;
+
 
 typedef struct {
     GLfloat position[3];
@@ -142,9 +142,6 @@ static const SceneVertex doorA [] = {
     }
 }
 
-- (IBAction)configurationAction:(id)sender {
-    NSLog(@"Configuration System");
-}
 
 
 - (void)pan:(UIPanGestureRecognizer *)gesture {

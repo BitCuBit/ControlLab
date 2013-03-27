@@ -74,7 +74,7 @@
         
         
         NSArray *items = [NSArray arrayWithObjects:house, params, flexiableItem, key, exit,  nil];
-        [self setItems:items animated:NO];
+        [self setItems:items animated:YES];
 
     }
     return self;
