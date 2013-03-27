@@ -12,7 +12,7 @@
 #import "ControlLabWebViewDevice.h"
 
 
-@interface ControlLabkDoorViewController : UIViewController <UIWebViewDelegate>
+@interface ControlLabkDoorViewController : UIViewController 
 
 
 - (IBAction)flip:(id)sender;

@@ -528,10 +528,10 @@ static const SceneVertex doorA [] = {
 
 
     baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeLookAt(0, 0, -3, 0, 0, -1, 0, 1, 0), matrix);
-    // Perspectiva 60º
+    //    baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(GLKMatrix4Make    // Perspectiva 60º
 
     //    baseEffect.transform.projectionMatrix = GLKMatrix4MakePerspective(1.047, 1024 / 768, 0.1, -20);
-    baseEffect.transform.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(60), 1024/768,0.1 ,20);
+    baseEffect.transform.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45), 1024/768,0.1 ,20);
 
     [baseEffect prepareToDraw];
 

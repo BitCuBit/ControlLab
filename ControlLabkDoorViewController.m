@@ -59,7 +59,6 @@
 
         // WEB VIEW
         ControlLabWebViewDevice *aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,250,250,275)];
-        aWebView.delegate = self;
 
         // ADD ELEMENTS TO VIEW
         [self.view addSubview:label1];

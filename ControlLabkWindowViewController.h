@@ -10,7 +10,7 @@
 #import "ControlLabBackgroundLayer.h"
 #import "ControlLabWebViewDevice.h"
 
-@interface ControlLabkWindowViewController : UIViewController <UIWebViewDelegate>
+@interface ControlLabkWindowViewController : UIViewController 
 
 
 - (IBAction)flip:(id)sender;

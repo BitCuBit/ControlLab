@@ -22,7 +22,7 @@
 
 	NSNumber *stopOne		= [NSNumber numberWithFloat:0.0];
 	NSNumber *stopTwo		= [NSNumber numberWithFloat:0.02];
-	NSNumber *stopThree	    = [NSNumber numberWithFloat:0.99];
+	NSNumber *stopThree	    = [NSNumber numberWithFloat:0.50];
 	NSNumber *stopFour		= [NSNumber numberWithFloat:1.0];
 
 	NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, stopThree, stopFour, nil];

@@ -24,7 +24,7 @@
     if (self) {
         // Custom initialization
 
-        CAGradientLayer *bgLayer = [ControlLabBackgroundLayer greyGradient];
+        CAGradientLayer *bgLayer = [ControlLabBackgroundLayer blueGradient];
         bgLayer.frame = self.view.bounds;
         [self.view.layer insertSublayer:bgLayer atIndex:0];
 
@@ -64,7 +64,6 @@
 
         // WEB VIEW
         ControlLabWebViewDevice *aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,250,250,275)];
-        aWebView.delegate = self;
 
         // ADD ELEMENTS TO VIEW
         [self.view addSubview:label1];

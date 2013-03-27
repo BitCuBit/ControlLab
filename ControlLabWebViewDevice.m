@@ -8,7 +8,9 @@
 
 #import "ControlLabWebViewDevice.h"
 
-@implementation ControlLabWebViewDevice
+@implementation ControlLabWebViewDevice {
+
+}
 
 
 
@@ -17,30 +19,57 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        NSString *fullURL = @"http://web.ua.es/es/dai/dai-lab.html";
-        NSURL *url = [NSURL URLWithString:fullURL];
-        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        // Configuration border and window
+        self.delegate = self;
+        self.scalesPageToFit = YES;
         // Round corners using CALayer property
         [[self layer] setCornerRadius:10];
         [self setClipsToBounds:YES];
-
         // Create colored border using CALayer property
         [[self layer] setBorderColor:
          [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
         [[self layer] setBorderWidth:2.75];
-        [self loadRequest:requestObj];
+
+        
+        NSString *fullURL = @"https://www.dropbox.com/s/l7xlxm9delw88os/web.png";
+        NSURL *url = [NSURL URLWithString:fullURL];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+
+
 
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+// Check for URLConnection failure
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    // Drawing code
+    UIAlertView *connectionError = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"Error connecting to page.  Please check your 3G and/or Wifi settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [connectionError show];
+    self.hidden = true;
 }
-*/
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+
+    //Check for server error
+    if ([httpResponse statusCode] >= 400) {
+        UIAlertView *serverError = [[UIAlertView alloc] initWithTitle:@"Server error" message:@"Error connecting to page.  If error persists, please contact support." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [serverError show];
+        self.hidden = true;
+
+        //Otherwise load webView
+    } else {
+        // Redundant code
+        NSString *urlAddress = @"https://www.dropbox.com/s/l7xlxm9delw88os/web.png";
+        NSURL *url = [NSURL URLWithString:urlAddress];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+
+        [self loadRequest:urlRequest];
+        self.hidden = false;
+    }
+}
 
 @end

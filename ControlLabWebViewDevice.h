@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface ControlLabWebViewDevice : UIWebView
+@interface ControlLabWebViewDevice : UIWebView <UIWebViewDelegate>
 
 @end
