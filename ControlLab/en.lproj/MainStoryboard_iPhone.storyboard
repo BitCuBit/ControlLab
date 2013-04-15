@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Control View Controller-->
+        <!--Control Lab View Controller i Phone-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ControlViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="ControlLabViewController_iPhone" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3" customClass="GLKView">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -19,8 +19,8 @@
         </scene>
     </scenes>
     <classes>
-        <class className="ControlViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ControlViewController.h"/>
+        <class className="ControlLabViewController_iPhone" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ControlLabViewController_iPhone.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

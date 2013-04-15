@@ -18,34 +18,12 @@
             </objects>
             <point key="canvasLocation" x="787" y="931"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="xfl-Ch-Op1">
-            <objects>
-                <viewController id="9MD-V8-FxE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3tI-z3-mpb">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="Ld8-Dd-aRv">
-                                <items>
-                                    <barButtonItem systemItem="rewind" id="Nc0-gm-DB3"/>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ld8-Dd-aRv" firstAttribute="trailing" secondItem="3tI-z3-mpb" secondAttribute="trailing" type="default" id="CEp-42-DHl"/>
-                            <constraint firstItem="Ld8-Dd-aRv" firstAttribute="bottom" secondItem="3tI-z3-mpb" secondAttribute="bottom" type="default" id="GkB-aC-rWG"/>
-                            <constraint firstItem="Ld8-Dd-aRv" firstAttribute="leading" secondItem="3tI-z3-mpb" secondAttribute="leading" type="default" id="kuI-Gv-rQj"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="8gi-hN-ETR"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pZg-yO-7b5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="798" y="-188"/>
-        </scene>
     </scenes>
+    <classes>
+        <class className="ControlViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ControlViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

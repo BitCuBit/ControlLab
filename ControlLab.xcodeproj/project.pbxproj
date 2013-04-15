@@ -10,6 +10,7 @@
 		531266F016D4D8A600FE71DE /* Project.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 531266EE16D4D8A600FE71DE /* Project.cpp */; };
 		531266FA16D4FE0800FE71DE /* ControlLabNSDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = 531266F916D4FE0800FE71DE /* ControlLabNSDevice.mm */; };
 		5320E52516D2481B005DE52D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320E52416D2481B005DE52D /* CoreMotion.framework */; };
+		53216DD3171C0F1B00F1221F /* ControlLabViewController-iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53216DD2171C0F1B00F1221F /* ControlLabViewController-iPhone.mm */; };
 		53338FF716DD20440089979C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53338FF616DD20440089979C /* QuartzCore.framework */; };
 		5334520916CCFBFD00658AFB /* BACK_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */; };
 		5334520A16CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */; };
@@ -51,6 +52,8 @@
 		531266F816D4FE0800FE71DE /* ControlLabNSDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabNSDevice.h; sourceTree = "<group>"; };
 		531266F916D4FE0800FE71DE /* ControlLabNSDevice.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlLabNSDevice.mm; sourceTree = "<group>"; };
 		5320E52416D2481B005DE52D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		53216DD1171C0F1B00F1221F /* ControlLabViewController-iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ControlLabViewController-iPhone.h"; path = "ControlLab/ControlLabViewController-iPhone.h"; sourceTree = "<group>"; };
+		53216DD2171C0F1B00F1221F /* ControlLabViewController-iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ControlLabViewController-iPhone.mm"; path = "ControlLab/ControlLabViewController-iPhone.mm"; sourceTree = "<group>"; };
 		53338FF616DD20440089979C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BACK_LIGHT_ON.png; sourceTree = "<group>"; };
 		5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOTTOM_LIGHT_ON.png; sourceTree = "<group>"; };
@@ -80,8 +83,8 @@
 		5366840F16CBEE71009AA68B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		5366841916CBEEC3009AA68B /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		5366841B16CBEEC8009AA68B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		5383948816D3C51100BEA478 /* ControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlViewController.h; path = ../ControlViewController.h; sourceTree = "<group>"; };
-		5383948916D3C51100BEA478 /* ControlViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ControlViewController.mm; path = ../ControlViewController.mm; sourceTree = "<group>"; };
+		5383948816D3C51100BEA478 /* ControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlViewController.h; sourceTree = "<group>"; };
+		5383948916D3C51100BEA478 /* ControlViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlViewController.mm; sourceTree = "<group>"; };
 		539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPad.png; sourceTree = "<group>"; };
 		539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPhone.png; sourceTree = "<group>"; };
 		53DA2FB917019DF700D9F167 /* ControlLabkDoorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkDoorViewController.h; sourceTree = "<group>"; };
@@ -123,6 +126,26 @@
 			name = Devices;
 			sourceTree = "<group>";
 		};
+		53216DD4171C0F3200F1221F /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				5366840B16CBEE71009AA68B /* MainStoryboard_iPhone.storyboard */,
+				53216DD1171C0F1B00F1221F /* ControlLabViewController-iPhone.h */,
+				53216DD2171C0F1B00F1221F /* ControlLabViewController-iPhone.mm */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		53216DD5171C0F3900F1221F /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				5366840E16CBEE71009AA68B /* MainStoryboard_iPad.storyboard */,
+				5383948816D3C51100BEA478 /* ControlViewController.h */,
+				5383948916D3C51100BEA478 /* ControlViewController.mm */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		53338FF516DCFBF40089979C /* ViewControllerDevice */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +172,8 @@
 		536683E716CBEE71009AA68B = {
 			isa = PBXGroup;
 			children = (
+				53216DD5171C0F3900F1221F /* iPad */,
+				53216DD4171C0F3200F1221F /* iPhone */,
 				53DA2FC81701DED200D9F167 /* CustomElements */,
 				53338FF516DCFBF40089979C /* ViewControllerDevice */,
 				531266F716D4FDB400FE71DE /* Devices */,
@@ -185,12 +210,8 @@
 		536683F916CBEE71009AA68B /* ControlLab */ = {
 			isa = PBXGroup;
 			children = (
-				5383948816D3C51100BEA478 /* ControlViewController.h */,
-				5383948916D3C51100BEA478 /* ControlViewController.mm */,
 				5366840216CBEE71009AA68B /* ControlLabAppDelegate.h */,
 				5366840316CBEE71009AA68B /* ControlLabAppDelegate.m */,
-				5366840B16CBEE71009AA68B /* MainStoryboard_iPhone.storyboard */,
-				5366840E16CBEE71009AA68B /* MainStoryboard_iPad.storyboard */,
 				536683FA16CBEE71009AA68B /* Supporting Files */,
 			);
 			path = ControlLab;
@@ -347,6 +368,7 @@
 				53DA2FC71701D48600D9F167 /* ControlLabBackgroundLayer.m in Sources */,
 				53DA2FCB1701F30100D9F167 /* ControlLabWebViewDevice.m in Sources */,
 				536155E3170318BA005E4D9D /* ControlLabCustomToolBar.m in Sources */,
+				53216DD3171C0F1B00F1221F /* ControlLabViewController-iPhone.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +389,7 @@
 				5366840C16CBEE71009AA68B /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
+			path = ControlLab;
 			sourceTree = "<group>";
 		};
 		5366840E16CBEE71009AA68B /* MainStoryboard_iPad.storyboard */ = {
@@ -375,6 +398,7 @@
 				5366840F16CBEE71009AA68B /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			path = ControlLab;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -445,6 +469,7 @@
 				GCC_PREFIX_HEADER = "ControlLab/ControlLab-Prefix.pch";
 				INFOPLIST_FILE = "ControlLab/ControlLab-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -456,6 +481,7 @@
 				GCC_PREFIX_HEADER = "ControlLab/ControlLab-Prefix.pch";
 				INFOPLIST_FILE = "ControlLab/ControlLab-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
