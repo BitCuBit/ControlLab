@@ -46,13 +46,13 @@
         [onoff addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
 
         UILabel *label3 = [[UILabel alloc ]initWithFrame:CGRectMake(60, 150, 50, 30)];
-        [label3 setText:@"On"];
+        [label3 setText:@"Off"];
         [label3 setBackgroundColor:color];
         label3.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
         [label3 setTextAlignment: NSTextAlignmentLeft];
 
         UILabel *label4 = [[UILabel alloc ]initWithFrame:CGRectMake(190, 150, 50, 30)];
-        [label4 setText:@"Off"];
+        [label4 setText:@"On"];
         [label4 setBackgroundColor:color];
         label4.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
         [label4 setTextAlignment: NSTextAlignmentRight];
