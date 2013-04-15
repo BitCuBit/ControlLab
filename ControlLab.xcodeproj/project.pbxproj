@@ -11,6 +11,9 @@
 		531266FA16D4FE0800FE71DE /* ControlLabNSDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = 531266F916D4FE0800FE71DE /* ControlLabNSDevice.mm */; };
 		5320E52516D2481B005DE52D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320E52416D2481B005DE52D /* CoreMotion.framework */; };
 		53216DD3171C0F1B00F1221F /* ControlLabViewController-iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53216DD2171C0F1B00F1221F /* ControlLabViewController-iPhone.mm */; };
+		53216DDE171C12FA00F1221F /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53216DD9171C12FA00F1221F /* FPPopoverController.m */; };
+		53216DDF171C12FA00F1221F /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53216DDB171C12FA00F1221F /* FPPopoverView.m */; };
+		53216DE0171C12FA00F1221F /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53216DDD171C12FA00F1221F /* FPTouchView.m */; };
 		53338FF716DD20440089979C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53338FF616DD20440089979C /* QuartzCore.framework */; };
 		5334520916CCFBFD00658AFB /* BACK_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */; };
 		5334520A16CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */; };
@@ -54,6 +57,13 @@
 		5320E52416D2481B005DE52D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		53216DD1171C0F1B00F1221F /* ControlLabViewController-iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ControlLabViewController-iPhone.h"; path = "ControlLab/ControlLabViewController-iPhone.h"; sourceTree = "<group>"; };
 		53216DD2171C0F1B00F1221F /* ControlLabViewController-iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ControlLabViewController-iPhone.mm"; path = "ControlLab/ControlLabViewController-iPhone.mm"; sourceTree = "<group>"; };
+		53216DD7171C12FA00F1221F /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		53216DD8171C12FA00F1221F /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		53216DD9171C12FA00F1221F /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		53216DDA171C12FA00F1221F /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		53216DDB171C12FA00F1221F /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		53216DDC171C12FA00F1221F /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		53216DDD171C12FA00F1221F /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		53338FF616DD20440089979C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BACK_LIGHT_ON.png; sourceTree = "<group>"; };
 		5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOTTOM_LIGHT_ON.png; sourceTree = "<group>"; };
@@ -146,6 +156,20 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
+		53216DD6171C12E200F1221F /* Popover-iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				53216DD7171C12FA00F1221F /* ARCMacros.h */,
+				53216DD8171C12FA00F1221F /* FPPopoverController.h */,
+				53216DD9171C12FA00F1221F /* FPPopoverController.m */,
+				53216DDA171C12FA00F1221F /* FPPopoverView.h */,
+				53216DDB171C12FA00F1221F /* FPPopoverView.m */,
+				53216DDC171C12FA00F1221F /* FPTouchView.h */,
+				53216DDD171C12FA00F1221F /* FPTouchView.m */,
+			);
+			name = "Popover-iPhone";
+			sourceTree = "<group>";
+		};
 		53338FF516DCFBF40089979C /* ViewControllerDevice */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +196,7 @@
 		536683E716CBEE71009AA68B = {
 			isa = PBXGroup;
 			children = (
+				53216DD6171C12E200F1221F /* Popover-iPhone */,
 				53216DD5171C0F3900F1221F /* iPad */,
 				53216DD4171C0F3200F1221F /* iPhone */,
 				53DA2FC81701DED200D9F167 /* CustomElements */,
@@ -369,6 +394,9 @@
 				53DA2FCB1701F30100D9F167 /* ControlLabWebViewDevice.m in Sources */,
 				536155E3170318BA005E4D9D /* ControlLabCustomToolBar.m in Sources */,
 				53216DD3171C0F1B00F1221F /* ControlLabViewController-iPhone.mm in Sources */,
+				53216DDE171C12FA00F1221F /* FPPopoverController.m in Sources */,
+				53216DDF171C12FA00F1221F /* FPPopoverView.m in Sources */,
+				53216DE0171C12FA00F1221F /* FPTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

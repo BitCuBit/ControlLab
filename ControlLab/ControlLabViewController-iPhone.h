@@ -21,14 +21,15 @@
 #import "ControlLabkDoorViewController.h"
 #import "ControlLabkWindowViewController.h"
 #import "ControlLabCustomToolBar.h"
+#import "FPPopoverController.h"
 
 
-@interface ControlLabViewController_iPhone : GLKViewController<GLKViewControllerDelegate,GLKViewDelegate, UIPopoverControllerDelegate> {
+@interface ControlLabViewController_iPhone : GLKViewController<GLKViewControllerDelegate,GLKViewDelegate, UIPopoverControllerDelegate,FPPopoverControllerDelegate> {
     GLuint vertexBuffer;
     GLuint indexBuffer[6];
     GLuint colorBuffer;
     GLuint vertexArray;
-    UIPopoverController *popover;
+    FPPopoverController *popover;
 }
 
 @property (strong, nonatomic) GLKBaseEffect *baseEffect;

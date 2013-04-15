@@ -358,10 +358,11 @@ static const SceneVertex doorA [] = {
 
 - (void) drawInterfaceDeviceDoor {
     ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
-    popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
+    popover = [[FPPopoverController alloc ]initWithViewController:vc];
     popover.delegate = self;
-    popover.popoverContentSize = CGSizeMake(300, 600);
-    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
+    popover.contentSize = CGSizeMake(300, 600);
+    NSLog(@"Draw Interface Device Door");
+    // [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
 
     [self stopGyroscope];
 
@@ -370,10 +371,11 @@ static const SceneVertex doorA [] = {
 
 - (void) drawInterfaceDeviceWindow {
     ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] initWithNibName:nil bundle:nil];
-    popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
+    popover = [[FPPopoverController alloc ]initWithViewController:vc];
     popover.delegate = self;
-    popover.popoverContentSize = CGSizeMake(300, 600);
-    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
+    popover.contentSize = CGSizeMake(300, 600);
+    NSLog(@"Draw Interface Device Window");
+    //  [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
     [self stopGyroscope];
 }
 

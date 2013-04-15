@@ -19,6 +19,14 @@
     if (self) {
         // Initialization code
         UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+        NSString *deviceType = [UIDevice currentDevice].model;
+
+        if([deviceType isEqualToString:@"iPhone"])
+            NSLog(@"Device iPhone");
+        else {
+            NSLog(@"Device iPad");
+        }
+
 
         if(orientation == UIInterfaceOrientationPortrait) {
             height = 768;
