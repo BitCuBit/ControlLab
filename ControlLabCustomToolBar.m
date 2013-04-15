@@ -21,21 +21,31 @@
         UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
         NSString *deviceType = [UIDevice currentDevice].model;
 
-        if([deviceType isEqualToString:@"iPhone"])
+        if([deviceType isEqualToString:@"iPhone"]) {
             NSLog(@"Device iPhone");
+            if(orientation == UIInterfaceOrientationPortrait) {
+                height = 640;
+                width = 1136;
+            }
+            else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+                width = 640;
+                height = 1136;
+            }
+
+        }
         else {
             NSLog(@"Device iPad");
-        }
-
-
-        if(orientation == UIInterfaceOrientationPortrait) {
-            height = 768;
-            width = 1024;
-        }
-        else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-            width = 768;
-            height = 1024;
+            if(orientation == UIInterfaceOrientationPortrait) {
+                height = 768;
+                width = 1024;
             }
+            else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+                width = 768;
+                height = 1024;
+            }
+        }
+
+
 
 
         
@@ -82,7 +92,7 @@
         
         
         NSArray *items = [NSArray arrayWithObjects:house, params, flexiableItem, key, exit,  nil];
-        [self setItems:items animated:YES];
+        [self setItems:items animated:NO];
 
     }
     return self;

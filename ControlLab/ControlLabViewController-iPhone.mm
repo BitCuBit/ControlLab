@@ -417,8 +417,8 @@ static const SceneVertex doorA [] = {
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [self.view addGestureRecognizer:tapGesture];
 
-    ControlLabCustomToolBar *toolbar = [[ControlLabCustomToolBar alloc] init];
-
+        ControlLabCustomToolBar *toolbar = [[ControlLabCustomToolBar alloc] init];
+    //UIToolbar *toolbar = [[UIToolbar alloc] init];
 
     [self.view addSubview:toolbar];
 
