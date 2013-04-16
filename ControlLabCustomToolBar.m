@@ -28,8 +28,8 @@
                 width = 1136;
             }
             else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-                width = 640;
-                height = 1136;
+                width = 320;
+                height = 568;
             }
 
         }
@@ -49,7 +49,10 @@
 
 
         
-        self.frame = CGRectMake(0, width - 44, height, 44);
+                self.frame = CGRectMake(0, width - 44, height, 44);
+                NSLog(@"Width: %f", width);
+                NSLog(@"Height: %f", height);
+
         self.backgroundColor = [UIColor grayColor];
 
         UIBarButtonItem *flexiableItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -90,7 +93,7 @@
         UIBarButtonItem *exit = [[UIBarButtonItem alloc] initWithCustomView:a4];
         
         
-        
+        //NSArray *items = [NSArray arrayWithObjects:house, params, key, exit, flexiableItem, key, exit,  nil];
         NSArray *items = [NSArray arrayWithObjects:house, params, flexiableItem, key, exit,  nil];
         [self setItems:items animated:NO];
 

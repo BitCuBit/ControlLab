@@ -362,6 +362,7 @@ static const SceneVertex doorA [] = {
     popover.delegate = self;
     popover.contentSize = CGSizeMake(300, 600);
     NSLog(@"Draw Interface Device Door");
+    [popover presentPopoverFromPoint:CGPointMake(200, 200)];
     // [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
 
     [self stopGyroscope];
@@ -417,8 +418,8 @@ static const SceneVertex doorA [] = {
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [self.view addGestureRecognizer:tapGesture];
 
-        ControlLabCustomToolBar *toolbar = [[ControlLabCustomToolBar alloc] init];
-    //UIToolbar *toolbar = [[UIToolbar alloc] init];
+    ControlLabCustomToolBar *toolbar = [[ControlLabCustomToolBar alloc] init];
+
 
     [self.view addSubview:toolbar];
 
