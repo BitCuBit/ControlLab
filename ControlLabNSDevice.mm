@@ -28,6 +28,17 @@ static const SceneVertex doorA [] = {
 
 }
 
+- (id) initWithFirstCoordinate:(SceneVertex)firstC andSecond:(SceneVertex)secondC andThird:(SceneVertex)thirdC andFourth:(SceneVertex)fourthC {
+    self = [super init];
+    if (self) {
+        firstCoordinate = firstC;
+        secondCoordinate = secondC;
+        thirdCoordinate = thirdC;
+        fourthCoordinate = fourthC;
+    }
+    return self;
+}
+
 - (bool) isSelected:(CGPoint)point with:(UIInterfaceOrientation)orientation {
     bool selected = false;
     if (orientation == UIInterfaceOrientationPortrait) {

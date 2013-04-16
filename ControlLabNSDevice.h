@@ -19,10 +19,13 @@ typedef enum {
 } kDevices;
 
 @interface ControlLabNSDevice : NSObject {
-
+    SceneVertex firstCoordinate;
+    SceneVertex secondCoordinate;
+    SceneVertex thirdCoordinate;
+    SceneVertex fourthCoordinate;
 }
 
-
-- (bool) isSelected:(CGPoint)point with:(UIInterfaceOrientation *)orientation;
+- (id) initWithFirstCoordinate:(SceneVertex)firstC andSecond:(SceneVertex)secondC andThird:(SceneVertex)thirdC andFourth:(SceneVertex)fourthC;
+- (bool) isSelected:(CGPoint)point with:(UIInterfaceOrientation)orientation;
 
 @end
