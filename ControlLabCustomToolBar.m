@@ -24,14 +24,17 @@
         if([deviceType isEqualToString:@"iPhone"]) {
             NSLog(@"Device iPhone");
             if(orientation == UIInterfaceOrientationPortrait) {
+                NSLog(@"Orientation Portrait");
                 height = 320;
                 width = 568;
             }
             else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-                width = 320;
-                height = 568;
+                NSLog(@"Orientation Landscape");
+                width = 568;
+                height = 320;
             }
 
+                self.frame = CGRectMake(0, height - 44, width, 44);
         }
         else {
             NSLog(@"Device iPad");
@@ -43,13 +46,14 @@
                 width = 768;
                 height = 1024;
             }
+        self.frame = CGRectMake(0, width - 44, height, 44);
         }
 
 
 
 
         
-        self.frame = CGRectMake(0, width - 44, height, 44);
+
         NSLog(@"Width: %f", width);
         NSLog(@"Height: %f", height);
         

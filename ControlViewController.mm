@@ -41,6 +41,9 @@
 #define kAccelerometerFrequency 60.0 //Hz
 #define kFactorUpdate 0.01
 
+#define kYMaxLandscapeRight 768.0
+#define kXMaxLandscapeRight 1028.0
+
 @synthesize baseEffect;
 @synthesize glView;
 
@@ -236,21 +239,20 @@ static const SceneVertex doorA [] = {
     }
     else if (isOrientation == UIInterfaceOrientationLandscapeRight) {
 
-
         // DETECCION PUERTA
         glhProjectf(-3.9f, 1.7f, 4.95f, __modelview, __projection, __viewport, coord[0]);
-        //                NSLog(@"Esquina Superior Derecha puerta X: %.f, Y: %.f", coord[0][0], (float)__viewport[3] - coord[0][1]);
+        NSLog(@"Esquina Superior Derecha puerta X: %.f, Y: %.f, Z: %.f", coord[0][0], (float)__viewport[3] - coord[0][1], coord[0][2]);
 
         glhProjectf(-2.4f, 1.7f, 4.95f, __modelview, __projection, __viewport, coord[1]);
-        //                NSLog(@"Esquina Superior Izquierda puerta X: %.f, Y: %.f", coord[1][0], (float)__viewport[3] - coord[1][1]);
+        NSLog(@"Esquina Superior Izquierda puerta X: %.f, Y: %.f, Z: %.f", coord[1][0], (float)__viewport[3] - coord[1][1], coord[0][2]);
 
         glhProjectf(-3.9f, -1.35f, 4.95f, __modelview, __projection, __viewport, coord[2]);
-        //                NSLog(@"Esquina inferior Derecha puerta X: %.f, Y: %.f", coord[2][0], (float)__viewport[3] - coord[2][1]);
+        NSLog(@"Esquina inferior Derecha puerta X: %.f, Y: %.f, Z: %.f", coord[2][0], (float)__viewport[3] - coord[2][1], coord[0][2]);
 
         glhProjectf(-2.4f, -1.35f, 4.95f, __modelview, __projection, __viewport, coord[3]);
-        //                NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f", coord[3][0], (float)__viewport[3] - coord[3][1]);
+        NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f, Z: %.f", coord[3][0], (float)__viewport[3] - coord[3][1], coord[0][2]);
 
-        //        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
+        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
 
 
         float xMin, xMax, yMin, yMax;
@@ -272,17 +274,18 @@ static const SceneVertex doorA [] = {
 
         }
 
+
         if (yMin < 0.0) {
             yMin = 0.0;
         }
-        if (yMax > 768.0) {
-            yMax = 768.0;
+        if (yMax > kYMaxLandscapeRight) {
+            yMax = kYMaxLandscapeRight;
         }
         if (xMin < 0.0) {
             xMin = 0.0;
         }
-        if (xMax > 1028.0) {
-            xMax = 1028.0;
+        if (xMax > kXMaxLandscapeRight) {
+            xMax = kXMaxLandscapeRight;
         }
 
 
@@ -333,14 +336,14 @@ static const SceneVertex doorA [] = {
         if (yMin < 0.0) {
             yMin = 0.0;
         }
-        if (yMax > 768.0) {
-            yMax = 768.0;
+        if (yMax > kYMaxLandscapeRight) {
+            yMax = kYMaxLandscapeRight;
         }
         if (xMin < 0.0) {
             xMin = 0.0;
         }
-        if (xMax > 1028.0) {
-            xMax = 1028.0;
+        if (xMax > kXMaxLandscapeRight) {
+            xMax = kXMaxLandscapeRight;
         }
 
 
@@ -362,7 +365,7 @@ static const SceneVertex doorA [] = {
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);
-    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
+    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
 
     [self stopGyroscope];
 
@@ -375,7 +378,7 @@ static const SceneVertex doorA [] = {
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);
-    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
+    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
     [self stopGyroscope];
 }
 

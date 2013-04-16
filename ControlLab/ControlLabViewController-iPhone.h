@@ -14,6 +14,8 @@
 #import <OpenGLES/ES1/glext.h>
 #import <CoreMotion/CoreMotion.h>
 #import <QuartzCore/QuartzCore.h>
+#import <sys/utsname.h>
+
 
 #import "Project.h"
 

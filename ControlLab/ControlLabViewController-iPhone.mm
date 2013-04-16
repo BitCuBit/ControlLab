@@ -28,6 +28,9 @@
     GLfloat __modelview[16];
     GLfloat __projection[16];
     GLint __viewport[4];
+    float kYMaxLandscapeRight;
+    float kXMaxLandscapeRight;
+
 
 }
 
@@ -256,6 +259,7 @@ static const SceneVertex doorA [] = {
 
         NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
 
+        
 
         float xMin, xMax, yMin, yMax;
         xMin = yMin = 568.0;
@@ -401,6 +405,41 @@ static const SceneVertex doorA [] = {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
+    NSLog(@"%@",[[UIDevice currentDevice] model]);
+
+    NSString *deviceType = [UIDevice currentDevice].model;
+
+    if([deviceType isEqualToString:@"iPhone"]) {
+
+    }
+    else {
+
+    }
+    struct utsname systemInfo;
+
+    uname(&systemInfo);
+    NSString *modelName = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+
+    if([modelName isEqualToString:@"iPhone3,1"]) {
+        modelName = @"iPhone 4";
+        kYMaxLandscapeRight = 320.0;
+        kXMaxLandscapeRight = 560.0;
+    }
+    else if([modelName isEqualToString:@"iPhone4,1"]) {
+        modelName = @"iPhone 4S";
+        kYMaxLandscapeRight = 320.0;
+        kXMaxLandscapeRight = 560.0;
+    }
+    else if([modelName isEqualToString:@"iPhone5,1"]) {
+        modelName = @"iPhone 5";
+        kYMaxLandscapeRight = 320.0;
+        kXMaxLandscapeRight = 560.0;
+    }
+
+    NSLog(@"Model %@", modelName);
+
+
+    
     factor = 0.0;
     factorUpDown = 0.0;
 
