@@ -136,24 +136,24 @@
 			name = Devices;
 			sourceTree = "<group>";
 		};
-		53216DD4171C0F3200F1221F /* iPhone */ = {
+		53216DD4171C0F3200F1221F /* iPhone-ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				5366840B16CBEE71009AA68B /* MainStoryboard_iPhone.storyboard */,
 				53216DD1171C0F1B00F1221F /* ControlLabViewController-iPhone.h */,
 				53216DD2171C0F1B00F1221F /* ControlLabViewController-iPhone.mm */,
 			);
-			name = iPhone;
+			name = "iPhone-ViewController";
 			sourceTree = "<group>";
 		};
-		53216DD5171C0F3900F1221F /* iPad */ = {
+		53216DD5171C0F3900F1221F /* iPad-ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				5366840E16CBEE71009AA68B /* MainStoryboard_iPad.storyboard */,
 				5383948816D3C51100BEA478 /* ControlViewController.h */,
 				5383948916D3C51100BEA478 /* ControlViewController.mm */,
 			);
-			name = iPad;
+			name = "iPad-ViewController";
 			sourceTree = "<group>";
 		};
 		53216DD6171C12E200F1221F /* Popover-iPhone */ = {
@@ -197,8 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				53216DD6171C12E200F1221F /* Popover-iPhone */,
-				53216DD5171C0F3900F1221F /* iPad */,
-				53216DD4171C0F3200F1221F /* iPhone */,
+				53216DD5171C0F3900F1221F /* iPad-ViewController */,
+				53216DD4171C0F3200F1221F /* iPhone-ViewController */,
 				53DA2FC81701DED200D9F167 /* CustomElements */,
 				53338FF516DCFBF40089979C /* ViewControllerDevice */,
 				531266F716D4FDB400FE71DE /* Devices */,

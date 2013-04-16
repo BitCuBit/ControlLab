@@ -358,6 +358,7 @@ static const SceneVertex doorA [] = {
 
 - (void) drawInterfaceDeviceDoor {
     ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
+    vc.title = @"Device Door";
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);
@@ -370,6 +371,7 @@ static const SceneVertex doorA [] = {
 
 - (void) drawInterfaceDeviceWindow {
     ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] initWithNibName:nil bundle:nil];
+    vc.title = @"Device Window";
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);

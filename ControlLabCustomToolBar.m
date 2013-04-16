@@ -24,8 +24,8 @@
         if([deviceType isEqualToString:@"iPhone"]) {
             NSLog(@"Device iPhone");
             if(orientation == UIInterfaceOrientationPortrait) {
-                height = 640;
-                width = 1136;
+                height = 320;
+                width = 568;
             }
             else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
                 width = 320;
@@ -49,13 +49,14 @@
 
 
         
-                self.frame = CGRectMake(0, width - 44, height, 44);
-                NSLog(@"Width: %f", width);
-                NSLog(@"Height: %f", height);
-
-        self.backgroundColor = [UIColor grayColor];
+        self.frame = CGRectMake(0, width - 44, height, 44);
+        NSLog(@"Width: %f", width);
+        NSLog(@"Height: %f", height);
+        
+        self.backgroundColor = [UIColor greenColor];
 
         UIBarButtonItem *flexiableItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        
         UIButton *a1 = [UIButton buttonWithType:UIButtonTypeCustom];
         [a1 setFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
         [a1 addTarget:self action:@selector(barbuttomItemActionHouse) forControlEvents:UIControlEventTouchUpInside];
@@ -95,7 +96,7 @@
         
         //NSArray *items = [NSArray arrayWithObjects:house, params, key, exit, flexiableItem, key, exit,  nil];
         NSArray *items = [NSArray arrayWithObjects:house, params, flexiableItem, key, exit,  nil];
-        [self setItems:items animated:NO];
+        [self setItems:items animated:YES];
 
     }
     return self;

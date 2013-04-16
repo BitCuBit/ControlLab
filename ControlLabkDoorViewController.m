@@ -32,43 +32,35 @@
 
         if([deviceType isEqualToString:@"iPhone"]) {
             // For iPhone
-            bgLayer = [ControlLabBackgroundLayer greyGradient];
-            bgLayer.frame = self.view.bounds;
-            [self.view.layer insertSublayer:bgLayer atIndex:0];
 
 
-            [self.view setBackgroundColor:[UIColor whiteColor]];
+            [self.view setBackgroundColor:[UIColor grayColor]];
             color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0];
 
-            label1 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 50, 200, 30)];
-            [label1 setText:@"Control"];
-            [label1 setBackgroundColor:color];
-            label1.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
-            [label1 setTextAlignment: NSTextAlignmentCenter];
 
-            label2 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 100, 200, 30)];
-            [label2 setText:@"Puerta Principal"];
-            [label2 setBackgroundColor:color];
-            label2.font = [UIFont fontWithName: @"MarkerFelt-Thin" size: 25.0];
-            [label2 setTextAlignment: NSTextAlignmentCenter];
 
-            onoff = [[UISwitch alloc] initWithFrame: CGRectMake(110, 150, 200, 60)];
+            onoff = [[UISwitch alloc] initWithFrame: CGRectMake(110, 5, 200, 60)];
             [onoff addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
 
-            label3 = [[UILabel alloc ]initWithFrame:CGRectMake(60, 150, 50, 30)];
+            label3 = [[UILabel alloc ]initWithFrame:CGRectMake(60, 5, 50, 30)];
             [label3 setText:@"Off"];
             [label3 setBackgroundColor:color];
             label3.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
             [label3 setTextAlignment: NSTextAlignmentLeft];
 
-            label4 = [[UILabel alloc ]initWithFrame:CGRectMake(190, 150, 50, 30)];
+            label4 = [[UILabel alloc ]initWithFrame:CGRectMake(190, 5, 50, 30)];
             [label4 setText:@"On"];
             [label4 setBackgroundColor:color];
             label4.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
             [label4 setTextAlignment: NSTextAlignmentRight];
 
             // WEB VIEW
-            aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,250,250,275)];
+            aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(40,50,200,200)];
+            // ADD ELEMENTS TO VIEW
+            [self.view addSubview:onoff];
+            [self.view addSubview:label3];
+            [self.view addSubview:label4];
+            [self.view addSubview:aWebView];
 
         }
         else {
@@ -110,16 +102,16 @@
             
             // WEB VIEW
             aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,250,250,275)];
+            // ADD ELEMENTS TO VIEW
+            [self.view addSubview:label1];
+            [self.view addSubview:label2];
+            [self.view addSubview:onoff];
+            [self.view addSubview:label3];
+            [self.view addSubview:label4];
+            [self.view addSubview:aWebView];
 
         }
 
-        // ADD ELEMENTS TO VIEW
-        [self.view addSubview:label1];
-        [self.view addSubview:label2];
-        [self.view addSubview:onoff];
-        [self.view addSubview:label3];
-        [self.view addSubview:label4];
-        [self.view addSubview:aWebView];
 
         
 

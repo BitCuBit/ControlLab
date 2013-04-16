@@ -188,7 +188,11 @@ static const SceneVertex doorA [] = {
 }
 
 - (void)getMatrixOpenGL {
-    glGetIntegerv( GL_VIEWPORT, __viewport );
+    //    glGetIntegerv( GL_VIEWPORT, __viewport );
+    __viewport[1] = 0;
+    __viewport[1] = 0;
+    __viewport[2] = 568;
+    __viewport[3] = 320;
 
     GLKMatrix4 modelview = baseEffect.transform.modelviewMatrix;
     GLKMatrix4 projection = baseEffect.transform.projectionMatrix;
@@ -239,22 +243,22 @@ static const SceneVertex doorA [] = {
 
         // DETECCION PUERTA
         glhProjectf(-3.9f, 1.7f, 4.95f, __modelview, __projection, __viewport, coord[0]);
-        //                NSLog(@"Esquina Superior Derecha puerta X: %.f, Y: %.f", coord[0][0], (float)__viewport[3] - coord[0][1]);
+                        NSLog(@"Esquina Superior Derecha puerta X: %.f, Y: %.f", coord[0][0], (float)__viewport[3] - coord[0][1]);
 
         glhProjectf(-2.4f, 1.7f, 4.95f, __modelview, __projection, __viewport, coord[1]);
-        //                NSLog(@"Esquina Superior Izquierda puerta X: %.f, Y: %.f", coord[1][0], (float)__viewport[3] - coord[1][1]);
+                        NSLog(@"Esquina Superior Izquierda puerta X: %.f, Y: %.f", coord[1][0], (float)__viewport[3] - coord[1][1]);
 
         glhProjectf(-3.9f, -1.35f, 4.95f, __modelview, __projection, __viewport, coord[2]);
-        //                NSLog(@"Esquina inferior Derecha puerta X: %.f, Y: %.f", coord[2][0], (float)__viewport[3] - coord[2][1]);
+                        NSLog(@"Esquina inferior Derecha puerta X: %.f, Y: %.f", coord[2][0], (float)__viewport[3] - coord[2][1]);
 
         glhProjectf(-2.4f, -1.35f, 4.95f, __modelview, __projection, __viewport, coord[3]);
-        //                NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f", coord[3][0], (float)__viewport[3] - coord[3][1]);
+                        NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f", coord[3][0], (float)__viewport[3] - coord[3][1]);
 
-        //        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
+        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
 
 
         float xMin, xMax, yMin, yMax;
-        xMin = yMin = 1028.0;
+        xMin = yMin = 568.0;
         xMax = yMax = 0.0;
         for (int i = 0; i < 4; i++) {
             if (coord[i][0] > xMax) {
@@ -275,14 +279,14 @@ static const SceneVertex doorA [] = {
         if (yMin < 0.0) {
             yMin = 0.0;
         }
-        if (yMax > 768.0) {
-            yMax = 768.0;
+        if (yMax > 320.0) {
+            yMax = 320.0;
         }
         if (xMin < 0.0) {
             xMin = 0.0;
         }
-        if (xMax > 1028.0) {
-            xMax = 1028.0;
+        if (xMax > 568.0) {
+            xMax = 568.0;
         }
 
 
@@ -308,11 +312,11 @@ static const SceneVertex doorA [] = {
         glhProjectf(0.2f, -0.5f, 4.95f, __modelview, __projection, __viewport, coord[3]);
         //                NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f", coord[3][0], (float)__viewport[3] - coord[3][1]);
 
-        //        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
+        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
 
 
 
-        xMin = yMin = 1028.0;
+        xMin = yMin = 568.0;
         xMax = yMax = 0.0;
         for (int i = 0; i < 4; i++) {
             if (coord[i][0] > xMax) {
@@ -333,14 +337,14 @@ static const SceneVertex doorA [] = {
         if (yMin < 0.0) {
             yMin = 0.0;
         }
-        if (yMax > 768.0) {
-            yMax = 768.0;
+        if (yMax > 320.0) {
+            yMax = 320.0;
         }
         if (xMin < 0.0) {
             xMin = 0.0;
         }
-        if (xMax > 1028.0) {
-            xMax = 1028.0;
+        if (xMax > 568.0) {
+            xMax = 568.0;
         }
 
 
@@ -357,32 +361,37 @@ static const SceneVertex doorA [] = {
 }
 
 - (void) drawInterfaceDeviceDoor {
-    ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
+    ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] init];
+    vc.title = @"Device Door";
     popover = [[FPPopoverController alloc ]initWithViewController:vc];
     popover.delegate = self;
-    popover.contentSize = CGSizeMake(300, 600);
-    NSLog(@"Draw Interface Device Door");
-    [popover presentPopoverFromPoint:CGPointMake(200, 200)];
-    // [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
+    popover.contentSize = CGSizeMake(300, 300);
+    popover.arrowDirection = FPPopoverNoArrow;
+    popover.tint = FPPopoverLightGrayTint;
 
+    NSLog(@"Draw Interface Device Door");
+    [popover presentPopoverFromPoint:CGPointMake(10, 10)];
     [self stopGyroscope];
 
 
 }
 
 - (void) drawInterfaceDeviceWindow {
-    ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] initWithNibName:nil bundle:nil];
+    ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] init];
+    vc.title = @"Device Window";
     popover = [[FPPopoverController alloc ]initWithViewController:vc];
     popover.delegate = self;
-    popover.contentSize = CGSizeMake(300, 600);
+    popover.contentSize = CGSizeMake(300, 300);
+    popover.arrowDirection = FPPopoverNoArrow;
+    popover.tint = FPPopoverLightGrayTint;
     NSLog(@"Draw Interface Device Window");
-    //  [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 600) inView:self.view permittedArrowDirections: 0 animated:YES];
+    [popover presentPopoverFromPoint:CGPointMake(10, 10)];
     [self stopGyroscope];
 }
 
 
 
--(void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+-(void) popoverControllerDidDismissPopover:(FPPopoverController *)popoverController {
     NSLog(@"Popover dismissed");
     [self loadGyroscope];
 }
@@ -419,7 +428,7 @@ static const SceneVertex doorA [] = {
     [self.view addGestureRecognizer:tapGesture];
 
     ControlLabCustomToolBar *toolbar = [[ControlLabCustomToolBar alloc] init];
-
+    toolbar.backgroundColor = [UIColor grayColor];
 
     [self.view addSubview:toolbar];
 
