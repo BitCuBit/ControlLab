@@ -246,24 +246,24 @@ static const SceneVertex doorA [] = {
 
         // DETECCION PUERTA
         glhProjectf(-3.9f, 1.7f, 4.95f, __modelview, __projection, __viewport, coord[0]);
-                        NSLog(@"Esquina Superior Derecha puerta X: %.f, Y: %.f", coord[0][0], (float)__viewport[3] - coord[0][1]);
+        //                NSLog(@"Esquina Superior Derecha puerta X: %.f, Y: %.f", coord[0][0], (float)__viewport[3] - coord[0][1]);
 
         glhProjectf(-2.4f, 1.7f, 4.95f, __modelview, __projection, __viewport, coord[1]);
-                        NSLog(@"Esquina Superior Izquierda puerta X: %.f, Y: %.f", coord[1][0], (float)__viewport[3] - coord[1][1]);
+        //                NSLog(@"Esquina Superior Izquierda puerta X: %.f, Y: %.f", coord[1][0], (float)__viewport[3] - coord[1][1]);
 
         glhProjectf(-3.9f, -1.35f, 4.95f, __modelview, __projection, __viewport, coord[2]);
-                        NSLog(@"Esquina inferior Derecha puerta X: %.f, Y: %.f", coord[2][0], (float)__viewport[3] - coord[2][1]);
+        //                NSLog(@"Esquina inferior Derecha puerta X: %.f, Y: %.f", coord[2][0], (float)__viewport[3] - coord[2][1]);
 
         glhProjectf(-2.4f, -1.35f, 4.95f, __modelview, __projection, __viewport, coord[3]);
-                        NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f", coord[3][0], (float)__viewport[3] - coord[3][1]);
+        //                NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f", coord[3][0], (float)__viewport[3] - coord[3][1]);
 
-        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
+        //NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
 
         
 
-        float xMin, xMax, yMin, yMax;
+        float xMin, xMax, yMin, yMax, zCoordinate;
         xMin = yMin = 568.0;
-        xMax = yMax = 0.0;
+        xMax = yMax = zCoordinate = 0.0;
         for (int i = 0; i < 4; i++) {
             if (coord[i][0] > xMax) {
                 xMax = coord[i][0];
@@ -276,6 +276,9 @@ static const SceneVertex doorA [] = {
             }
             if ((float)__viewport[3] - coord[i][1] < yMin) {
                 yMin = (float)__viewport[3] - coord[i][1];
+            }
+            if (coord[i][2] < 0.0 || coord[i][2] > 1.0) {
+                zCoordinate = coord[i][2];
             }
 
         }
@@ -296,9 +299,10 @@ static const SceneVertex doorA [] = {
 
         if (winPos.x > xMin && winPos.x < xMax) {
             if (winPos.y > yMin && winPos.y < yMax) {
-                NSLog(@"Puerta Tocada");
-                [self drawInterfaceDeviceDoor];
-
+                if (zCoordinate == 0.0) {
+                    NSLog(@"Puerta Tocada");
+                    [self drawInterfaceDeviceDoor];
+                }
             }
         }
 
@@ -321,7 +325,7 @@ static const SceneVertex doorA [] = {
 
 
         xMin = yMin = 568.0;
-        xMax = yMax = 0.0;
+        xMax = yMax = zCoordinate = 0.0;
         for (int i = 0; i < 4; i++) {
             if (coord[i][0] > xMax) {
                 xMax = coord[i][0];
@@ -334,6 +338,9 @@ static const SceneVertex doorA [] = {
             }
             if ((float)__viewport[3] - coord[i][1] < yMin) {
                 yMin = (float)__viewport[3] - coord[i][1];
+            }
+            if (coord[i][2] < 0.0 || coord[i][2] > 1.0) {
+                zCoordinate = coord[i][2];
             }
 
         }
@@ -354,9 +361,10 @@ static const SceneVertex doorA [] = {
 
         if (winPos.x > xMin && winPos.x < xMax) {
             if (winPos.y > yMin && winPos.y < yMax) {
-                NSLog(@"Ventana Tocada");
-                [self drawInterfaceDeviceWindow];
-
+                if (zCoordinate == 0.0 ) {
+                    NSLog(@"Ventana Tocada");
+                    [self drawInterfaceDeviceWindow];
+                }
             }
         }
 
@@ -593,7 +601,7 @@ static const SceneVertex doorA [] = {
     //    baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(GLKMatrix4Make    // Perspectiva 60º
 
     //    baseEffect.transform.projectionMatrix = GLKMatrix4MakePerspective(1.047, 1024 / 768, 0.1, -20);
-    baseEffect.transform.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45), 1024/768,0.1 ,20);
+    baseEffect.transform.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45), 560/320,0.1 ,20);
 
     [baseEffect prepareToDraw];
 

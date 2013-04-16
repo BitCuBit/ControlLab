@@ -8,7 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ControlLabNSDevice : NSObject
+typedef struct {
+    GLfloat position[3];
+    GLfloat color[4];
+} SceneVertex;
+
+typedef enum {
+    kWindows,
+    kDoors
+} kDevices;
+
+@interface ControlLabNSDevice : NSObject {
+
+}
 
 
 - (bool) isSelected:(CGPoint)point with:(UIInterfaceOrientation *)orientation;

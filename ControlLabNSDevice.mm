@@ -9,10 +9,18 @@
 #import "ControlLabNSDevice.h"
 #import "Project.h"
 
-typedef enum {
-    kWindows,
-    kDoors
-} kDevices;
+static const SceneVertex windowsA [] = {
+    {{-1.35f, -0.5f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{-1.35f,  2.3f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{ 0.2f, -0.5f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{ 0.2f,  2.3f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+};
+static const SceneVertex doorA [] = {
+    {{-3.9f, -1.35f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{-3.9f,  1.7f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{-2.4f, -1.35f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{-2.4f,  1.7f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+};
 
 @implementation ControlLabNSDevice {
 
