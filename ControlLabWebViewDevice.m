@@ -32,12 +32,18 @@
          [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
         [[self layer] setBorderWidth:2.75];
 
-        
         fullURL = @"https://www.dropbox.com/s/l7xlxm9delw88os/web.png";
         url = [NSURL URLWithString:fullURL];
         requestObj = [NSURLRequest requestWithURL:url];
         NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
-
+        
+        /*
+        NSString *authStr = [NSString stringWithFormat:@"%@:%@", @"myusername", @"mypassword"];
+        NSData *authData = [authStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64Encoding]];
+        requestObj = [NSURLRequest requestWithURL:fullURL];
+        [requestObj setValue:authValue forHTTPHeaderField:@"Authorization"];
+*/
 
 
     }
