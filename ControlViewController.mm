@@ -301,8 +301,8 @@ static const SceneVertex doorA [] = {
         if (winPos.x > xMin && winPos.x < xMax) {
             if (winPos.y > yMin && winPos.y < yMax) {
                 if (zCoordinate == 0.0) {
-                    NSLog(@"Puerta Tocada");
-                    NSLog(@"Coordenada Z: %f", zCoordinate);
+                    //                    NSLog(@"Puerta Tocada");
+                    //                    NSLog(@"Coordenada Z: %f", zCoordinate);
                     [self drawInterfaceDeviceDoor];
                             }
 
@@ -311,18 +311,18 @@ static const SceneVertex doorA [] = {
 
 
         // DETECCION VENTANA
-        NSLog(@"############# VENTANA #############");
+        //        NSLog(@"############# VENTANA #############");
         glhProjectf(-1.35f, 2.3f, 4.95f, __modelview, __projection, __viewport, coord[0]);
-        NSLog(@"Esquina Superior Derecha Ventana X: %.f, Y: %.f, Z: %f", coord[0][0], (float)__viewport[3] - coord[0][1], coord[0][2]);
+        //        NSLog(@"Esquina Superior Derecha Ventana X: %.f, Y: %.f, Z: %f", coord[0][0], (float)__viewport[3] - coord[0][1], coord[0][2]);
 
         glhProjectf(-0.2f, 2.3f, 4.95f, __modelview, __projection, __viewport, coord[1]);
-        NSLog(@"Esquina Superior Izquierda Ventana X: %.f, Y: %.f, Z: %f", coord[1][0], (float)__viewport[3] - coord[1][1], coord[1][2]);
+        //        NSLog(@"Esquina Superior Izquierda Ventana X: %.f, Y: %.f, Z: %f", coord[1][0], (float)__viewport[3] - coord[1][1], coord[1][2]);
 
         glhProjectf(-1.35f, -0.5f, 4.95f, __modelview, __projection, __viewport, coord[2]);
-        NSLog(@"Esquina inferior Derecha Ventana X: %.f, Y: %.f, Z: %f", coord[2][0], (float)__viewport[3] - coord[2][1], coord[2][2]);
+        //        NSLog(@"Esquina inferior Derecha Ventana X: %.f, Y: %.f, Z: %f", coord[2][0], (float)__viewport[3] - coord[2][1], coord[2][2]);
 
         glhProjectf(0.2f, -0.5f, 4.95f, __modelview, __projection, __viewport, coord[3]);
-        NSLog(@"Esquina inferior izquierda Ventana X: %.f, Y: %.f, Z: %f", coord[3][0], (float)__viewport[3] - coord[3][1], coord[3][2]);
+        //        NSLog(@"Esquina inferior izquierda Ventana X: %.f, Y: %.f, Z: %f", coord[3][0], (float)__viewport[3] - coord[3][1], coord[3][2]);
 
 
         xMin = yMin = 1028.0;
@@ -365,8 +365,8 @@ static const SceneVertex doorA [] = {
             if (winPos.y > yMin && winPos.y < yMax) {
 
                 if (zCoordinate == 0.0 ) {
-                    NSLog(@"Ventana Tocada");
-                    NSLog(@"Coordenada Z: %f", zCoordinate);
+                    //                    NSLog(@"Ventana Tocada");
+                    //                    NSLog(@"Coordenada Z: %f", zCoordinate);
                     [self drawInterfaceDeviceWindow];
 
                 }

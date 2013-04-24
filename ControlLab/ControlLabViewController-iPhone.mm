@@ -300,7 +300,7 @@ static const SceneVertex doorA [] = {
         if (winPos.x > xMin && winPos.x < xMax) {
             if (winPos.y > yMin && winPos.y < yMax) {
                 if (zCoordinate == 0.0) {
-                    NSLog(@"Puerta Tocada");
+                    //                    NSLog(@"Puerta Tocada");
                     [self drawInterfaceDeviceDoor];
                 }
             }
@@ -362,7 +362,7 @@ static const SceneVertex doorA [] = {
         if (winPos.x > xMin && winPos.x < xMax) {
             if (winPos.y > yMin && winPos.y < yMax) {
                 if (zCoordinate == 0.0 ) {
-                    NSLog(@"Ventana Tocada");
+                    //                    NSLog(@"Ventana Tocada");
                     [self drawInterfaceDeviceWindow];
                 }
             }
@@ -381,7 +381,7 @@ static const SceneVertex doorA [] = {
     popover.arrowDirection = FPPopoverNoArrow;
     popover.tint = FPPopoverLightGrayTint;
 
-    NSLog(@"Draw Interface Device Door");
+    //    NSLog(@"Draw Interface Device Door");
     [popover presentPopoverFromPoint:CGPointMake(10, 10)];
     [self stopGyroscope];
 
@@ -396,7 +396,7 @@ static const SceneVertex doorA [] = {
     popover.contentSize = CGSizeMake(300, 300);
     popover.arrowDirection = FPPopoverNoArrow;
     popover.tint = FPPopoverLightGrayTint;
-    NSLog(@"Draw Interface Device Window");
+    //    NSLog(@"Draw Interface Device Window");
     [popover presentPopoverFromPoint:CGPointMake(10, 10)];
     [self stopGyroscope];
 }
