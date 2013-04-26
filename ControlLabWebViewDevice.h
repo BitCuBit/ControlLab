@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "NSData+Additions.h"
 
-@interface ControlLabWebViewDevice : UIWebView <UIWebViewDelegate>
+@interface ControlLabWebViewDevice : UIWebView <UIWebViewDelegate, NSURLConnectionDelegate>
 
 @end

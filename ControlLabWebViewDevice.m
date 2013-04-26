@@ -11,8 +11,10 @@
 @implementation ControlLabWebViewDevice {
     NSString *fullURL;
     NSURL *url;
-    NSURLRequest  *requestObj;
+    NSMutableURLRequest  *requestObj;
     NSURLConnection *connection;
+    NSMutableData *receivedData;
+    NSMutableDictionary *dataDictionary;
 }
 
 
@@ -32,32 +34,46 @@
         [[self layer] setBorderColor:
          [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
         [[self layer] setBorderWidth:2.75];
+        // Create the request.
+        // create the connection with the request
+        // and start loading the data
+
 
         fullURL = @"http://shanon.iuii.ua.es/cam2/";
         url = [NSURL URLWithString:fullURL];
-        requestObj = [[NSURLRequest alloc] initWithURL:url];
+        requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+
+        
         connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
         if (connection) {
-            [connection start];
+            // Create the NSMutableData to hold the received data.
+            // receivedData is an instance variable declared elsewhere.
+            receivedData = [NSMutableData data];
+
+
+        } else {
+            // Inform the user that the connection failed.
+
+
         }
-
-
-
 
     }
     return self;
 }
--(BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+
+
+
+// Check for URLConnection failure
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    //return YES to say that we have the necessary credentials to access the requested resource
-    NSLog(@"canAuthenticateAgainstProtectionSpace");
-    return YES;
+    NSLog(@"Error Connection");
+    UIAlertView *connectionError = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"Error connecting to page.  Please check your 3G and/or Wifi settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [connectionError show];
+    self.hidden = true;
 }
 
-
--(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    NSLog(@"did Receive Authentication Challenge");
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    //    NSLog(@"did Receive Authentication Challenge");
 
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPBasic])
     {
@@ -78,7 +94,7 @@
 
             // inform the user that the user name and password
             // in the preferences are incorrect
-            
+
             NSLog (@"failed authentication");
             UIAlertView *connectionError = [[UIAlertView alloc] initWithTitle:@"Authetication error" message:@"Error connecting to page.  User name and password are incorrect." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [connectionError show];
@@ -86,21 +102,21 @@
         }
     }
 }
-// Check for URLConnection failure
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"Error Connection");
-    UIAlertView *connectionError = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"Error connecting to page.  Please check your 3G and/or Wifi settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [connectionError show];
-    self.hidden = true;
+
+
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSLog(@"connectionDidFinishLoading");
+
 }
+#pragma mark NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"Did Receive Response");
+    //        NSLog(@"Connection Did Receive Response");
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
-   //Check for server error
+    //Check for server error
     if ([httpResponse statusCode] >= 400) {
         UIAlertView *serverError = [[UIAlertView alloc] initWithTitle:@"Server error" message:@"Error connecting to page.  If error persists, please contact support." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [serverError show];
@@ -109,20 +125,60 @@
         //Otherwise load webView
     } else {
         // Redundant code
-        [self loadRequest:requestObj];
+        if ([self dataIsValidJPEG:receivedData]) {
+            if ([receivedData length] >= 99600 ) {
+                // problem
+
+                UIImage *newImage = [UIImage imageWithData:receivedData];
+
+                // crappy workaround
+
+                [receivedData writeToFile:[NSString stringWithFormat:@"a.jpg"] atomically:NO];
+
+                UIImage *newImage = [UIImage imageWithContentsOfFile:@"a.jpg"];
+                [self loadData:receivedData MIMEType:@"image/jpeg" textEncodingName:nil baseURL:nil];
+                [receivedData setLength:0];
+
+            }
+        }
 
         self.hidden = false;
     }
 }
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    //    NSLog(@"Did Receive Data");
-
-    UIImage *result;
-    result = [UIImage imageWithData:data];
-    [self loadRequest:requestObj];
-}
--(void)connectionDidFinishLoading:(NSURLConnection *)connection
+-(BOOL)dataIsValidJPEG:(NSData *)data
 {
-    NSLog(@"Did Finish Loading");
+    if (!data || data.length < 2) return NO;
+
+    NSInteger totalBytes = data.length;
+    const char *bytes = (const char*)[data bytes];
+
+    return (bytes[0] == (char)0xff &&
+            bytes[1] == (char)0xd8 &&
+            bytes[totalBytes-2] == (char)0xff &&
+            bytes[totalBytes-1] == (char)0xd9);
 }
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    //     NSLog(@"connection didReceiveData");
+    if (receivedData == nil) {
+        receivedData = [[NSMutableData alloc] init];
+    }
+    [receivedData appendData:data];
+}
+
+#pragma mark - WebView Delegate Methods
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"didFailLoadWithError: %@", [error description]);
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    //    NSLog(@"webViewDidFinishLoad");
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSLog(@"webViewDidStartLoad");
+    
+}
+
 @end
