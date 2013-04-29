@@ -43,8 +43,9 @@
         url = [NSURL URLWithString:fullURL];
         requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
 
-        
         connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+
+
         if (connection) {
             // Create the NSMutableData to hold the received data.
             // receivedData is an instance variable declared elsewhere.
@@ -112,7 +113,7 @@
 #pragma mark NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    //        NSLog(@"Connection Did Receive Response");
+    //    NSLog(@"Connection Did Receive Response");
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
@@ -122,43 +123,16 @@
         [serverError show];
         self.hidden = true;
 
-        //Otherwise load webView
     } else {
-        // Redundant code
-        if ([self dataIsValidJPEG:receivedData]) {
-            if ([receivedData length] >= 99600 ) {
-                // problem
 
-                UIImage *newImage = [UIImage imageWithData:receivedData];
-
-                // crappy workaround
-
-                [receivedData writeToFile:[NSString stringWithFormat:@"a.jpg"] atomically:NO];
-
-                UIImage *newImage = [UIImage imageWithContentsOfFile:@"a.jpg"];
-                [self loadData:receivedData MIMEType:@"image/jpeg" textEncodingName:nil baseURL:nil];
-                [receivedData setLength:0];
-
-            }
-        }
+       [self loadData:receivedData MIMEType:@"image/jpeg" textEncodingName:nil baseURL:nil];
 
         self.hidden = false;
     }
 }
--(BOOL)dataIsValidJPEG:(NSData *)data
-{
-    if (!data || data.length < 2) return NO;
 
-    NSInteger totalBytes = data.length;
-    const char *bytes = (const char*)[data bytes];
-
-    return (bytes[0] == (char)0xff &&
-            bytes[1] == (char)0xd8 &&
-            bytes[totalBytes-2] == (char)0xff &&
-            bytes[totalBytes-1] == (char)0xd9);
-}
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    //     NSLog(@"connection didReceiveData");
+    //    NSLog(@"3. - Connection didReceiveData");
     if (receivedData == nil) {
         receivedData = [[NSMutableData alloc] init];
     }
@@ -173,12 +147,14 @@
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    //    NSLog(@"webViewDidFinishLoad");
+            NSLog(@"2. - WebViewDidFinishLoad");
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidStartLoad");
-    
+
+    NSLog(@"1. - WebViewDidStartLoad");
+
+
 }
 
 @end
