@@ -14,6 +14,8 @@
 		53216DDE171C12FA00F1221F /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53216DD9171C12FA00F1221F /* FPPopoverController.m */; };
 		53216DDF171C12FA00F1221F /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53216DDB171C12FA00F1221F /* FPPopoverView.m */; };
 		53216DE0171C12FA00F1221F /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53216DDD171C12FA00F1221F /* FPTouchView.m */; };
+		532841EB172EC52F00D1B9CA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 532841EA172EC52F00D1B9CA /* libxml2.2.dylib */; };
+		532841ED172EC54200D1B9CA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 532841EC172EC54200D1B9CA /* libxml2.dylib */; };
 		53338FF716DD20440089979C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53338FF616DD20440089979C /* QuartzCore.framework */; };
 		5334520916CCFBFD00658AFB /* BACK_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */; };
 		5334520A16CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */; };
@@ -69,6 +71,9 @@
 		53216DDB171C12FA00F1221F /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
 		53216DDC171C12FA00F1221F /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
 		53216DDD171C12FA00F1221F /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		532841E9172EC40C00D1B9CA /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		532841EA172EC52F00D1B9CA /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		532841EC172EC54200D1B9CA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		53338FF616DD20440089979C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5334520316CCFBFD00658AFB /* BACK_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BACK_LIGHT_ON.png; sourceTree = "<group>"; };
 		5334520416CCFBFD00658AFB /* BOTTOM_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOTTOM_LIGHT_ON.png; sourceTree = "<group>"; };
@@ -124,6 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532841ED172EC54200D1B9CA /* libxml2.dylib in Frameworks */,
+				532841EB172EC52F00D1B9CA /* libxml2.2.dylib in Frameworks */,
 				5376AA69172A8047007A4E3E /* libz.dylib in Frameworks */,
 				5376AA67172A802B007A4E3E /* libz.1.2.5.dylib in Frameworks */,
 				5376AA61172A6C9A007A4E3E /* CFNetwork.framework in Frameworks */,
@@ -236,6 +243,8 @@
 		536683F216CBEE71009AA68B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				532841EC172EC54200D1B9CA /* libxml2.dylib */,
+				532841EA172EC52F00D1B9CA /* libxml2.2.dylib */,
 				5376AA68172A8047007A4E3E /* libz.dylib */,
 				5376AA66172A802B007A4E3E /* libz.1.2.5.dylib */,
 				5376AA64172A6DBF007A4E3E /* MobileCoreServices.framework */,
@@ -312,6 +321,7 @@
 		53DA2FC81701DED200D9F167 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
+				532841E9172EC40C00D1B9CA /* ARCMacros.h */,
 				536155E1170318BA005E4D9D /* ControlLabCustomToolBar.h */,
 				536155E2170318BA005E4D9D /* ControlLabCustomToolBar.m */,
 				53DA2FC91701F30100D9F167 /* ControlLabWebViewDevice.h */,

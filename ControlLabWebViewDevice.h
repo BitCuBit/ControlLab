@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface ControlLabWebViewDevice : UIWebView <UIWebViewDelegate, NSURLConnectionDelegate>
+@interface ControlLabWebViewDevice : UIImageView <NSURLConnectionDelegate>
 
+- (void) closeControlLabWebViewDevice;
 @end

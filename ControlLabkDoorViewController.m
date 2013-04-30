@@ -130,4 +130,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    NSLog(@"View Did Disappear");
+    [aWebView closeControlLabWebViewDevice];
+}
+
+
 @end

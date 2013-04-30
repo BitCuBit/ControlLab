@@ -25,8 +25,6 @@
     if (self) {
         // Initialization code
         // Configuration border and window
-        self.delegate = self;
-        self.scalesPageToFit = YES;
         // Round corners using CALayer property
         [[self layer] setCornerRadius:10];
         [self setClipsToBounds:YES];
@@ -45,17 +43,10 @@
 
         connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
 
-
         if (connection) {
-            // Create the NSMutableData to hold the received data.
-            // receivedData is an instance variable declared elsewhere.
             receivedData = [NSMutableData data];
 
-
         } else {
-            // Inform the user that the connection failed.
-
-
         }
 
     }
@@ -74,32 +65,23 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    //    NSLog(@"did Receive Authentication Challenge");
-
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPBasic])
     {
-        NSLog(@"Method HTTP Basic");
         if ([challenge previousFailureCount] == 0)
         {
             NSURLCredential *newCredential;
-
             newCredential = [NSURLCredential credentialWithUser:@"pcasado@dtic.ua.es"
                                                        password:@"b78uxmM33r1"
                                                     persistence:NSURLCredentialPersistenceForSession];
-
             [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
         }
         else
         {
             [[challenge sender] cancelAuthenticationChallenge:challenge];
 
-            // inform the user that the user name and password
-            // in the preferences are incorrect
-
             NSLog (@"failed authentication");
             UIAlertView *connectionError = [[UIAlertView alloc] initWithTitle:@"Authetication error" message:@"Error connecting to page.  User name and password are incorrect." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [connectionError show];
-            // ...error will be handled by connection didFailWithError
         }
     }
 }
@@ -124,9 +106,9 @@
         self.hidden = true;
 
     } else {
+        self.image = [UIImage imageWithData:receivedData];
 
-       [self loadData:receivedData MIMEType:@"image/jpeg" textEncodingName:nil baseURL:nil];
-
+        [receivedData setLength:0];
         self.hidden = false;
     }
 }
@@ -139,22 +121,7 @@
     [receivedData appendData:data];
 }
 
-#pragma mark - WebView Delegate Methods
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"didFailLoadWithError: %@", [error description]);
+- (void) closeControlLabWebViewDevice {
+    [connection cancel];
 }
-
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-            NSLog(@"2. - WebViewDidFinishLoad");
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-
-    NSLog(@"1. - WebViewDidStartLoad");
-
-
-}
-
 @end
