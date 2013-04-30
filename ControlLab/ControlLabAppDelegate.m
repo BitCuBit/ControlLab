@@ -13,6 +13,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+    NSString *usuario = @"pcasado@dtic.ua.es"; // Just an example
+    NSString *password = @"b78uxmM33r1"; // Just an example
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+
+    if (standardUserDefaults) {
+        [standardUserDefaults setObject:[NSString stringWithString:usuario] forKey:@"usuario"];
+        [standardUserDefaults setObject:[NSString stringWithString:password] forKey:@"password"];       [standardUserDefaults synchronize];
+    }
+
     return YES;
 }
 							

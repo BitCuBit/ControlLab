@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "ControlLabBackgroundLayer.h"
+#import "FPPopoverController.h"
+#import "ControlLabkKeyViewController.h"
 
-@interface ControlLabCustomToolBar : UIToolbar
+@interface ControlLabCustomToolBar : UIToolbar <FPPopoverControllerDelegate>{
+    FPPopoverController *popover;
+
+}
 
 
 @end

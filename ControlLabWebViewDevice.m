@@ -68,13 +68,27 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *user = nil;
+    NSString *pass = nil;
+
+    if (standardUserDefaults) {
+        user = [standardUserDefaults objectForKey:@"usuario"];
+        pass = [standardUserDefaults objectForKey:@"password"];
+    }
+
+
+    NSLog(@"Usuario: %@", user);
+    NSLog(@"Password: %@", pass);
+
+    
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPBasic])
     {
         if ([challenge previousFailureCount] == 0)
         {
             NSURLCredential *newCredential;
-            newCredential = [NSURLCredential credentialWithUser:@"pcasado@dtic.ua.es"
-                                                       password:@"b78uxmM33r1"
+            newCredential = [NSURLCredential credentialWithUser:user
+                                                       password:pass
                                                     persistence:NSURLCredentialPersistenceForSession];
             [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
         }
