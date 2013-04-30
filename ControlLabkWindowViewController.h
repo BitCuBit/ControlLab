@@ -10,7 +10,7 @@
 #import "ControlLabBackgroundLayer.h"
 #import "ControlLabWebViewDevice.h"
 
-@interface ControlLabkWindowViewController : UIViewController 
+@interface ControlLabkWindowViewController : UIViewController <NSURLConnectionDelegate>
 
 
 

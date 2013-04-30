@@ -15,7 +15,9 @@
     NSURLConnection *connection;
     NSMutableData *receivedData;
     NSMutableDictionary *dataDictionary;
+
 }
+
 
 
 
@@ -24,6 +26,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        fullURL = @"http://shanon.iuii.ua.es/cam2/";
         // Configuration border and window
         // Round corners using CALayer property
         [[self layer] setCornerRadius:10];
@@ -33,14 +36,14 @@
          [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
         [[self layer] setBorderWidth:2.75];
         // Create the request.
-        // create the connection with the request
-        // and start loading the data
 
 
-        fullURL = @"http://shanon.iuii.ua.es/cam2/";
+
         url = [NSURL URLWithString:fullURL];
         requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
 
+        // create the connection with the request
+        // and start loading the data
         connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
 
         if (connection) {
