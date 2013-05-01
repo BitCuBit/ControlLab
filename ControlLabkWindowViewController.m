@@ -83,7 +83,7 @@
             [self.view.layer insertSublayer:bgLayer atIndex:0];
 
 
-            [self.view setBackgroundColor:[UIColor whiteColor]];
+            //            [self.view setBackgroundColor:[UIColor whiteColor]];
             color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0];
 
 
@@ -96,7 +96,7 @@
             onoff = [[UISwitch alloc] initWithFrame: CGRectMake(110, 60, 200, 60)];
             [onoff addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
 
-            label3 = [[UILabel alloc ]initWithFrame:CGRectMake(60, 60, 50, 30)];
+            label3 = [[UILabel alloc ]initWithFrame:CGRectMake(30, 60, 60, 30)];
             [label3 setText:@"Down"];
             [label3 setBackgroundColor:color];
             label3.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
@@ -127,11 +127,11 @@
 - (IBAction)flip:(id)sender {
     if (onoff.on) {
         NSLog(@"Up");
-        fullURL = @"http://shanon.iuii.ua.es/s/rest/home/device/31/write/moveBlind/1";
+        fullURL = @"http://shanon.iuii.ua.es/s/rest/home/device/32/write/moveBlind/1";
     }
     else {
         NSLog(@"Down");
-        fullURL = @"http://shanon.iuii.ua.es/s/rest/home/device/31/write/moveBlind/2";
+        fullURL = @"http://shanon.iuii.ua.es/s/rest/home/device/32/write/moveBlind/2";
 
     }
     url = [NSURL URLWithString:fullURL];

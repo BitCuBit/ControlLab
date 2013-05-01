@@ -374,7 +374,7 @@ static const SceneVertex doorA [] = {
 
 - (void) drawInterfaceDeviceDoor {
     ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] init];
-    vc.title = @"Device Door";
+    vc.title = @"Front Door";
     popover = [[FPPopoverController alloc ]initWithViewController:vc];
     popover.delegate = self;
     popover.contentSize = CGSizeMake(300, 300);
@@ -390,7 +390,7 @@ static const SceneVertex doorA [] = {
 
 - (void) drawInterfaceDeviceWindow {
     ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] init];
-    vc.title = @"Device Window";
+    vc.title = @"Blind";
     popover = [[FPPopoverController alloc ]initWithViewController:vc];
     popover.delegate = self;
     popover.contentSize = CGSizeMake(300, 300);

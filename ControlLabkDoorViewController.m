@@ -75,7 +75,7 @@
 
 
             label2 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 10, 200, 30)];
-            [label2 setText:@"Puerta Principal"];
+            [label2 setText:@"Front Door"];
             [label2 setBackgroundColor:color];
             label2.font = [UIFont fontWithName: @"MarkerFelt-Thin" size: 25.0];
             [label2 setTextAlignment: NSTextAlignmentCenter];

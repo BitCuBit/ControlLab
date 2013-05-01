@@ -24,6 +24,7 @@
 		5334520D16CCFBFD00658AFB /* RIGHT_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520716CCFBFD00658AFB /* RIGHT_LIGHT_ON.png */; };
 		5334520E16CCFBFD00658AFB /* TOP_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520816CCFBFD00658AFB /* TOP_LIGHT_ON.png */; };
 		53353ED71730057700169229 /* ControlLabkKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53353ED61730057700169229 /* ControlLabkKeyViewController.m */; };
+		53567C6F17311C0700F298FA /* ControlLabkParamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53567C6E17311C0700F298FA /* ControlLabkParamsViewController.m */; };
 		535D9BED16FB2F1200CC330C /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 535D9BEC16FB2F1200CC330C /* house.png */; };
 		535D9BF116FB2FE600CC330C /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 535D9BF016FB2FE600CC330C /* key.png */; };
 		536155E01702F1A5005E4D9D /* params.png in Resources */ = {isa = PBXBuildFile; fileRef = 536155DF1702F1A5005E4D9D /* params.png */; };
@@ -84,6 +85,8 @@
 		5334520816CCFBFD00658AFB /* TOP_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TOP_LIGHT_ON.png; sourceTree = "<group>"; };
 		53353ED51730057700169229 /* ControlLabkKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkKeyViewController.h; sourceTree = "<group>"; };
 		53353ED61730057700169229 /* ControlLabkKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkKeyViewController.m; sourceTree = "<group>"; };
+		53567C6D17311C0700F298FA /* ControlLabkParamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkParamsViewController.h; sourceTree = "<group>"; };
+		53567C6E17311C0700F298FA /* ControlLabkParamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkParamsViewController.m; sourceTree = "<group>"; };
 		535D9BEC16FB2F1200CC330C /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
 		535D9BF016FB2FE600CC330C /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		536155DF1702F1A5005E4D9D /* params.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = params.png; sourceTree = "<group>"; };
@@ -198,8 +201,7 @@
 		53338FF516DCFBF40089979C /* ViewControllerDevice */ = {
 			isa = PBXGroup;
 			children = (
-				53353ED51730057700169229 /* ControlLabkKeyViewController.h */,
-				53353ED61730057700169229 /* ControlLabkKeyViewController.m */,
+				53567C6C173113A300F298FA /* CustomElementsToolBar */,
 				53DA2FBC17019FB500D9F167 /* ControlLabkWindowViewController.h */,
 				53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */,
 				53DA2FB917019DF700D9F167 /* ControlLabkDoorViewController.h */,
@@ -218,6 +220,17 @@
 				539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		53567C6C173113A300F298FA /* CustomElementsToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				53567C6D17311C0700F298FA /* ControlLabkParamsViewController.h */,
+				53567C6E17311C0700F298FA /* ControlLabkParamsViewController.m */,
+				53353ED51730057700169229 /* ControlLabkKeyViewController.h */,
+				53353ED61730057700169229 /* ControlLabkKeyViewController.m */,
+			);
+			name = CustomElementsToolBar;
 			sourceTree = "<group>";
 		};
 		536683E716CBEE71009AA68B = {
@@ -433,6 +446,7 @@
 				53216DDF171C12FA00F1221F /* FPPopoverView.m in Sources */,
 				53216DE0171C12FA00F1221F /* FPTouchView.m in Sources */,
 				53353ED71730057700169229 /* ControlLabkKeyViewController.m in Sources */,
+				53567C6F17311C0700F298FA /* ControlLabkParamsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,9 +54,6 @@
 
         
 
-        NSLog(@"Width: %f", width);
-        NSLog(@"Height: %f", height);
-        
         self.backgroundColor = [UIColor greenColor];
 
         UIBarButtonItem *flexiableItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -113,15 +110,32 @@
 
 - (void) barbuttomItemActionParams {
     NSLog(@"Touch Inside Params");
+    ControlLabkParamsViewController *vc = [[ControlLabkParamsViewController alloc] init];
+    vc.title = @"Parameters";
+    popover = [[FPPopoverController alloc ]initWithViewController:vc];
+    popover.delegate = self;
+    popover.contentSize = CGSizeMake(300, 300);
+    popover.arrowDirection = FPPopoverNoArrow;
+    popover.tint = FPPopoverLightGrayTint;
+    [popover presentPopoverFromPoint:CGPointMake(10, 10)];
 }
 
 - (void) barbuttomItemActionKey {
     NSLog(@"Touch Inside Key");
+    ControlLabkKeyViewController *vc = [[ControlLabkKeyViewController alloc] init];
+    vc.title = @"Key Access";
+    popover = [[FPPopoverController alloc ]initWithViewController:vc];
+    popover.delegate = self;
+    popover.contentSize = CGSizeMake(300, 300);
+    popover.arrowDirection = FPPopoverNoArrow;
+    popover.tint = FPPopoverLightGrayTint;
+    [popover presentPopoverFromPoint:CGPointMake(10, 10)];
 
 }
 
 - (void) barbuttomItemActionExit {
     NSLog(@"Touch Inside Exit");
+    exit(0);
 }
 
 /*

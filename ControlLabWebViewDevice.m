@@ -15,6 +15,8 @@
     NSURLConnection *connection;
     NSMutableData *receivedData;
     NSMutableDictionary *dataDictionary;
+    NSString *user;
+    NSString *pass;
 
 }
 
@@ -26,7 +28,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        fullURL = @"http://shanon.iuii.ua.es/cam2/";
+        NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+
+        if (standardUserDefaults) {
+            user = [standardUserDefaults objectForKey:@"usuario"];
+            pass = [standardUserDefaults objectForKey:@"password"];
+            fullURL = [standardUserDefaults objectForKey:@"urlcam2"];
+        }
         // Configuration border and window
         // Round corners using CALayer property
         [[self layer] setCornerRadius:10];
@@ -68,20 +76,6 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *user = nil;
-    NSString *pass = nil;
-
-    if (standardUserDefaults) {
-        user = [standardUserDefaults objectForKey:@"usuario"];
-        pass = [standardUserDefaults objectForKey:@"password"];
-    }
-
-
-    NSLog(@"Usuario: %@", user);
-    NSLog(@"Password: %@", pass);
-
-    
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPBasic])
     {
         if ([challenge previousFailureCount] == 0)
