@@ -32,7 +32,7 @@
     GLfloat __modelview[16];
     GLfloat __projection[16];
     GLint __viewport[4];
-
+    NSMutableArray *devices;
 }
 
 #pragma mark - Data Structures
@@ -47,12 +47,17 @@
 @synthesize baseEffect;
 @synthesize glView;
 
-
+/*
 typedef struct {
     GLfloat position[3];
     GLfloat color[4];
 } SceneVertex;
 
+typedef enum {
+ kWindows,
+ kDoors
+ } kDevices;
+*/
 
 typedef enum {
     kFaceFront = 0,
@@ -63,10 +68,6 @@ typedef enum {
     kFaceTop = 5
 } kFaceCubeType;
 
-typedef enum {
-    kWindows,
-    kDoors
-} kDevices;
 
 
 
@@ -121,6 +122,20 @@ static const SceneVertex windowsA [] = {
     {{ 0.2f, -0.5f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
     {{ 0.2f,  2.3f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
 };
+// Panel Television
+static const SceneVertex panelTV [] = {
+    {{ 1.8f, -1.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{ 1.8f,  1.7f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{-1.5f, -1.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{-1.5f,  1.7f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+};
+static const SceneVertex windowsB [] = {
+    {{ 1.8f, -1.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{ 1.8f,  1.7f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{-1.5f, -1.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{-1.5f,  1.7f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+};
+
 static const SceneVertex doorA [] = {
     {{-3.9f, -1.35f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
     {{-3.9f,  1.7f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
@@ -144,8 +159,6 @@ static const SceneVertex doorA [] = {
         factorUpDown = -3.14/2;
     }
 }
-
-
 
 - (void)pan:(UIPanGestureRecognizer *)gesture {
     float x = [gesture locationInView:self.view].x;
@@ -181,7 +194,6 @@ static const SceneVertex doorA [] = {
 
 }
 
-
 - (void)tap:(UIPanGestureRecognizer *)gesture {
 
     CGPoint point = [gesture locationInView:self.view];
@@ -191,7 +203,6 @@ static const SceneVertex doorA [] = {
 }
 
 - (void)getMatrixOpenGL {
-    //    glGetIntegerv( GL_VIEWPORT, __viewport );
     __viewport[1] = 0;
     __viewport[1] = 0;
     __viewport[2] = 1024;
@@ -221,14 +232,15 @@ static const SceneVertex doorA [] = {
 
 }
 
--(void) getOGLPos:(CGPoint)winPos
-{
-    // I am doing this once at the beginning when I set the perspective view
-    
-    float coord[4][3];
+-(void) getOGLPos:(CGPoint)winPos {
 
+    float coord[4][3];
     
     [self getMatrixOpenGL];
+
+    for (ControlLabNSDevice *d in devices) {
+        NSLog(@"Compruebo si devices tocados");
+    }
 
     // Distinguir Portrait y Lanscape
     // Control Device Orientation
@@ -244,7 +256,9 @@ static const SceneVertex doorA [] = {
     }
     else if (isOrientation == UIInterfaceOrientationLandscapeRight) {
 
-        //NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
+        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
+
+
         //NSLog(@"############# PUERTA #############");
         // DETECCION PUERTA
         glhProjectf(-3.9f, 1.7f, 4.95f, __modelview, __projection, __viewport, coord[0]);
@@ -428,10 +442,13 @@ static const SceneVertex doorA [] = {
 
     baseEffect = [[GLKBaseEffect alloc] init];
 
-
+    // Cargo Texturas
     [self loadTextures];
-    
+
+    // Cargo Gyroscope
     [self loadGyroscope];
+
+
     // Añado reconocimiento de arrastre de imagen
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self.view addGestureRecognizer:panGesture];
@@ -593,7 +610,7 @@ static const SceneVertex doorA [] = {
 
     // Cara RIGHT #########################################
 
-    [self drawFaceCube:kFaceRight];
+      [self drawFaceCube:kFaceRight];
 
     // Cara TOP #########################################
 
@@ -626,7 +643,7 @@ static const SceneVertex doorA [] = {
     [baseEffect prepareToDraw];
 
 
-    //    [self drawDevice:kWindows];
+        [self drawDevice:kWindows];
     //    [self drawDevice:kDoors];
 
 
@@ -636,13 +653,20 @@ static const SceneVertex doorA [] = {
     glDisable(GL_BLEND);
 
 }
+/*
+- (void) drawDevice: (ControlLabNSDevice*) device {
+            glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsA[0].position);
+            glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsA[0].color);
+            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+}
 
+*/
 
 - (void) drawDevice: (kDevices) type {
     switch (type) {
         case kWindows:
-            glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsA[0].position);
-            glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsA[0].color);
+            glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsB[0].position);
+            glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsB[0].color);
             glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
             break;
         case kDoors:

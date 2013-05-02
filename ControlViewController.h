@@ -22,6 +22,9 @@
 #import "ControlLabkWindowViewController.h"
 #import "ControlLabCustomToolBar.h"
 
+// DEVICES
+#import "ControlLabNSDevice.h"
+
 
 @interface ControlViewController : GLKViewController<GLKViewControllerDelegate,GLKViewDelegate, UIPopoverControllerDelegate> {
     GLuint vertexBuffer;

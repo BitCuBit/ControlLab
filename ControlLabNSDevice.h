@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Project.h"
 
 typedef struct {
     GLfloat position[3];
@@ -25,7 +26,10 @@ typedef enum {
     SceneVertex fourthCoordinate;
 }
 
+
+
 - (id) initWithFirstCoordinate:(SceneVertex)firstC andSecond:(SceneVertex)secondC andThird:(SceneVertex)thirdC andFourth:(SceneVertex)fourthC;
-- (bool) isSelected:(CGPoint)point with:(UIInterfaceOrientation)orientation;
+- (bool) isSelected:(CGPoint)point withModelview:(float*)modelview andProjection:(float*)projection andViewPort:(int*)viewport;
+
 
 @end
