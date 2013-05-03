@@ -449,7 +449,7 @@ static const SceneVertex doorA [] = {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    factor = -0.6;
+    factor = 0.0;
     factorUpDown = 0.0;
 
     mm = [[CMMotionManager alloc] init];
