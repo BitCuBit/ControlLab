@@ -129,11 +129,33 @@ static const SceneVertex panelTV [] = {
     {{-1.5f, -1.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
     {{-1.5f,  1.7f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
 };
+// Persiana 31
+static const SceneVertex blind31 [] = {
+    {{ 5.0f, -0.6f, -2.8f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{ 5.0f,  5.0f, -2.8f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{ 2.8f, -0.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{ 2.8f,  3.3f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+};
+// Persiana 32
+static const SceneVertex blind32 [] = {
+    {{ 5.0f, -1.0f,  4.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{ 5.0f,  5.0f,  4.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{ 5.0f, -1.0f, -2.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{ 5.0f,  5.0f, -2.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+};
+// Persiana 32
+static const SceneVertex blind33 [] = {
+    {{ 2.2f, -0.5f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{ 2.2f,  2.5f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{ 5.0f, -0.5f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{ 5.0f,  5.0f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+};
+
 static const SceneVertex windowsB [] = {
-    {{ 1.8f, -1.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
-    {{ 1.8f,  1.7f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
-    {{-1.5f, -1.6f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
-    {{-1.5f,  1.7f, -5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
+    {{ 2.2f, -0.5f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
+    {{ 2.2f,  2.5f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
+    {{ 5.0f, -0.5f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//2
+    {{ 5.0f,  5.0f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
 };
 
 static const SceneVertex doorA [] = {
@@ -427,7 +449,7 @@ static const SceneVertex doorA [] = {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    factor = 0.0;
+    factor = -0.6;
     factorUpDown = 0.0;
 
     mm = [[CMMotionManager alloc] init];
@@ -566,7 +588,6 @@ static const SceneVertex doorA [] = {
 #pragma mark - Process Drawing OpenGL ES
 
 -  (void) glkView:(GLKView *)view drawInRect:(CGRect)rect {
-    //    NSLog(@"Draw In Rect");
 
     glClearColor(0.5, 0.5, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -643,7 +664,7 @@ static const SceneVertex doorA [] = {
     [baseEffect prepareToDraw];
 
 
-        [self drawDevice:kWindows];
+    //   [self drawDevice:kWindows];
     //    [self drawDevice:kDoors];
 
 
@@ -653,14 +674,6 @@ static const SceneVertex doorA [] = {
     glDisable(GL_BLEND);
 
 }
-/*
-- (void) drawDevice: (ControlLabNSDevice*) device {
-            glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsA[0].position);
-            glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &windowsA[0].color);
-            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-}
-
-*/
 
 - (void) drawDevice: (kDevices) type {
     switch (type) {

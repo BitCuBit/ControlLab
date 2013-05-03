@@ -24,6 +24,8 @@ typedef enum {
     SceneVertex secondCoordinate;
     SceneVertex thirdCoordinate;
     SceneVertex fourthCoordinate;
+    NSString *identificador;
+    NSString *name;
 }
 
 
