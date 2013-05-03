@@ -10,8 +10,11 @@
 #import "ControlLabBackgroundLayer.h"
 #import "ControlLabWebViewDevice.h"
 
-@interface ControlLabkWindowViewController : UIViewController <NSURLConnectionDelegate>
+@interface ControlLabkWindowViewController : UIViewController <NSURLConnectionDelegate> {
+    NSString *identify;
+}
 
 
+- (void) getIdentify:(NSString *)device;
 
 @end

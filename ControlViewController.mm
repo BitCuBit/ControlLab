@@ -47,17 +47,6 @@
 @synthesize baseEffect;
 @synthesize glView;
 
-/*
-typedef struct {
-    GLfloat position[3];
-    GLfloat color[4];
-} SceneVertex;
-
-typedef enum {
- kWindows,
- kDoors
- } kDevices;
-*/
 
 typedef enum {
     kFaceFront = 0,
@@ -225,7 +214,7 @@ static const SceneVertex doorA [] = {
 }
 
 - (void)getMatrixOpenGL {
-    __viewport[1] = 0;
+    __viewport[0] = 0;
     __viewport[1] = 0;
     __viewport[2] = 1024;
     __viewport[3] = 768;
@@ -256,14 +245,24 @@ static const SceneVertex doorA [] = {
 
 -(void) getOGLPos:(CGPoint)winPos {
 
-    float coord[4][3];
-    
-    [self getMatrixOpenGL];
+    //    float coord[4][3];
+    //    [self getMatrixOpenGL];
+
 
     for (ControlLabNSDevice *d in devices) {
-        NSLog(@"Compruebo si devices tocados");
-    }
+        [self getMatrixOpenGL];
 
+        if ([d isSelected:winPos withModelview:__modelview andProjection:__projection andViewPort:__viewport]) {
+            NSLog(@"Tocado Device: %@", [d getName]);
+            if ([d getTypeOfDevice] == kWindows) {
+                [self drawInterfaceDeviceWindow:[d getIdentificador]];
+            }
+            if ([d getTypeOfDevice] == kDoors) {
+                [self drawInterfaceDeviceDoor:[d getIdentificador]];
+            }
+        }
+    }
+/*
     // Distinguir Portrait y Lanscape
     // Control Device Orientation
     UIInterfaceOrientation isOrientation = self.interfaceOrientation;
@@ -278,7 +277,7 @@ static const SceneVertex doorA [] = {
     }
     else if (isOrientation == UIInterfaceOrientationLandscapeRight) {
 
-        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
+        //        NSLog(@"Touch: X: %.f, Y: %.f", winPos.x, winPos.y);
 
 
         //NSLog(@"############# PUERTA #############");
@@ -294,9 +293,6 @@ static const SceneVertex doorA [] = {
 
         glhProjectf(-2.4f, -1.35f, 4.95f, __modelview, __projection, __viewport, coord[3]);
         //NSLog(@"Esquina inferior izquierda puerta X: %.f, Y: %.f, Z: %f", coord[3][0], (float)__viewport[3] - coord[3][1], coord[3][2]);
-
-
-
 
         float xMin, xMax, yMin, yMax, zCoordinate;
         xMin = yMin = 1028.0;
@@ -334,6 +330,11 @@ static const SceneVertex doorA [] = {
             xMax = kXMaxLandscapeRight;
         }
 
+        NSLog(@"X Max: %.f, Min: %.f", xMax, xMin);
+        NSLog(@"Y Max: %.f, Min: %.f", yMax, yMin);
+        NSLog(@"Touch X: %f, Y: %f", winPos.x, winPos.y);
+
+
         if (winPos.x > xMin && winPos.x < xMax) {
             if (winPos.y > yMin && winPos.y < yMax) {
                 if (zCoordinate == 0.0) {
@@ -351,7 +352,7 @@ static const SceneVertex doorA [] = {
         glhProjectf(-1.35f, 2.3f, 4.95f, __modelview, __projection, __viewport, coord[0]);
         //        NSLog(@"Esquina Superior Derecha Ventana X: %.f, Y: %.f, Z: %f", coord[0][0], (float)__viewport[3] - coord[0][1], coord[0][2]);
 
-        glhProjectf(-0.2f, 2.3f, 4.95f, __modelview, __projection, __viewport, coord[1]);
+        glhProjectf(0.2f, 2.3f, 4.95f, __modelview, __projection, __viewport, coord[1]);
         //        NSLog(@"Esquina Superior Izquierda Ventana X: %.f, Y: %.f, Z: %f", coord[1][0], (float)__viewport[3] - coord[1][1], coord[1][2]);
 
         glhProjectf(-1.35f, -0.5f, 4.95f, __modelview, __projection, __viewport, coord[2]);
@@ -395,6 +396,9 @@ static const SceneVertex doorA [] = {
         if (xMax > kXMaxLandscapeRight) {
             xMax = kXMaxLandscapeRight;
         }
+        NSLog(@"X Max: %.f, Min: %.f", xMax, xMin);
+        NSLog(@"Y Max: %.f, Min: %.f", yMax, yMin);
+        NSLog(@"Touch X: %f, Y: %f", winPos.x, winPos.y);
 
 
         if (winPos.x > xMin && winPos.x < xMax) {
@@ -412,24 +416,24 @@ static const SceneVertex doorA [] = {
         
 
     }
+ */
 }
 
-- (void) drawInterfaceDeviceDoor {
+- (void) drawInterfaceDeviceDoor:(NSString *)device {
     ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
-    vc.title = @"Device Door";
+
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);
     [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
-
     [self stopGyroscope];
 
 
 }
 
-- (void) drawInterfaceDeviceWindow {
+- (void) drawInterfaceDeviceWindow:(NSString *)device {
     ControlLabkWindowViewController *vc = [[ControlLabkWindowViewController alloc] initWithNibName:nil bundle:nil];
-    vc.title = @"Device Window";
+    [vc getIdentify:device];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);
@@ -447,7 +451,10 @@ static const SceneVertex doorA [] = {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+
+
+    // Do any additional setup after loading the view, typically from a nib.
 
     factor = 0.0;
     factorUpDown = 0.0;
@@ -483,6 +490,32 @@ static const SceneVertex doorA [] = {
 
     [self.view addSubview:toolbar];
 
+
+    // Create devices
+    devices = [[NSMutableArray alloc] init];
+
+    ControlLabNSDevice *door = [[ControlLabNSDevice alloc] initWithFirstCoordinate:doorA[0] andSecond:doorA[1] andThird:doorA[2] andFourth:doorA[3]];
+    [door setIdDevice:@"" andName:@"Front Door" andType:kDoors];
+    [devices addObject:door];
+    ControlLabNSDevice *window = [[ControlLabNSDevice alloc] initWithFirstCoordinate:windowsA[0] andSecond:windowsA[1] andThird:windowsA[2] andFourth:windowsA[3]];
+    [window setIdDevice:@"" andName:@"Blind" andType:kWindows];
+    [devices addObject:window];
+
+    ControlLabNSDevice *window1 = [[ControlLabNSDevice alloc] initWithFirstCoordinate:blind31[0] andSecond:blind31[1] andThird:blind31[2] andFourth:blind31[3]];
+    [window1 setIdDevice:@"31" andName:@"Blind" andType:kWindows];
+    [devices addObject:window1];
+
+    ControlLabNSDevice *window2 = [[ControlLabNSDevice alloc] initWithFirstCoordinate:blind32[0] andSecond:blind32[1] andThird:blind32[2] andFourth:blind32[3]];
+    [window2 setIdDevice:@"32" andName:@"Blind" andType:kWindows];
+    [devices addObject:window2];
+
+    ControlLabNSDevice *window3 = [[ControlLabNSDevice alloc] initWithFirstCoordinate:blind33[0] andSecond:blind33[1] andThird:blind33[2] andFourth:blind33[3]];
+    [window3 setIdDevice:@"33" andName:@"Blind" andType:kWindows];
+    [devices addObject:window3];
+
+    ControlLabNSDevice *pannel = [[ControlLabNSDevice alloc] initWithFirstCoordinate:panelTV[0] andSecond:panelTV[1] andThird:panelTV[2] andFourth:panelTV[3]];
+    [pannel setIdDevice:@"" andName:@"Pannel" andType:kPannel];
+    [devices addObject:pannel];
 
 }
 
@@ -683,8 +716,6 @@ static const SceneVertex doorA [] = {
             glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
             break;
         case kDoors:
-
-
             glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &doorA[0].position);
             glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), &doorA[0].color);
             glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -694,6 +725,7 @@ static const SceneVertex doorA [] = {
             break;
     }
 }
+
 - (void) drawFaceCube: (kFaceCubeType) type {
     switch (type) {
         case kFaceFront:
@@ -761,8 +793,6 @@ static const SceneVertex doorA [] = {
             break;
     }
 }
-
-
 
 - (void) glkViewControllerUpdate:(GLKViewController *)controller {
 

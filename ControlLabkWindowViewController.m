@@ -83,7 +83,6 @@
             [self.view.layer insertSublayer:bgLayer atIndex:0];
 
 
-            //            [self.view setBackgroundColor:[UIColor whiteColor]];
             color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0];
 
 
@@ -123,16 +122,21 @@
     }
     return self;
 }
+- (void) getIdentify:(NSString *)device {
+    self->identify = device;
+}
+
 
 - (IBAction)flip:(id)sender {
     if (onoff.on) {
+
+        fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/1"];
         NSLog(@"Up");
-        fullURL = @"http://shanon.iuii.ua.es/s/rest/home/device/32/write/moveBlind/1";
     }
     else {
-        NSLog(@"Down");
-        fullURL = @"http://shanon.iuii.ua.es/s/rest/home/device/32/write/moveBlind/2";
 
+        fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/2"];
+        NSLog(@"Down");
     }
     url = [NSURL URLWithString:fullURL];
     requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
