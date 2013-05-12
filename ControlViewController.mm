@@ -524,18 +524,29 @@ static const SceneVertex doorA [] = {
 
 - (void) loadGyroscope {
 
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *activo;
+    if (standardUserDefaults) {
+        activo = [[NSNumber alloc] init] ;
+        activo = [standardUserDefaults objectForKey:@"gyroscope"];
 
-    if ([mm isGyroAvailable]) {
-        if ([mm isGyroActive] == NO) {
-            [mm setGyroUpdateInterval:1.0f / kAccelerometerFrequency];
-            queueGyroscope = [[NSOperationQueue alloc] init];
-            [mm startGyroUpdatesToQueue:queueGyroscope withHandler:^(CMGyroData *gyroData, NSError *error){
+    }
+    if ([activo isEqualToNumber:[NSNumber numberWithInt:0]]) {
+        [mm stopGyroUpdates];
 
-                // Control Device Orientation
-                UIInterfaceOrientation isOrientation = self.interfaceOrientation;
+    }
+    else {
+        if ([mm isGyroAvailable]) {
+            if ([mm isGyroActive] == NO) {
+                [mm setGyroUpdateInterval:1.0f / kAccelerometerFrequency];
+                queueGyroscope = [[NSOperationQueue alloc] init];
+                [mm startGyroUpdatesToQueue:queueGyroscope withHandler:^(CMGyroData *gyroData, NSError *error){
 
-                //                NSLog(@"Rotation Rate: %f", gyroData.rotationRate.x);
-                //                if (abs((float)gyroData.rotationRate.x)> 0.005 || abs((float)gyroData.rotationRate.y)> 0.005) {
+                    // Control Device Orientation
+                    UIInterfaceOrientation isOrientation = self.interfaceOrientation;
+
+                    //                NSLog(@"Rotation Rate: %f", gyroData.rotationRate.x);
+                    //                if (abs((float)gyroData.rotationRate.x)> 0.005 || abs((float)gyroData.rotationRate.y)> 0.005) {
                     if (isOrientation == UIInterfaceOrientationPortrait) {
 
                         [self updateFactor:-gyroData.rotationRate.y * kFactorUpdate];
@@ -556,12 +567,14 @@ static const SceneVertex doorA [] = {
                         [self updateFactor:-gyroData.rotationRate.x * kFactorUpdate];
                         [self updateFactorUpDown:-gyroData.rotationRate.y * kFactorUpdate];
                     }
+                    
 
-                //}
-
-            }];
+                }];
+            }
         }
+
     }
+
 
 
 }
@@ -796,7 +809,7 @@ static const SceneVertex doorA [] = {
 
 - (void) glkViewControllerUpdate:(GLKViewController *)controller {
 
-
+    [self loadGyroscope];
 
 }
 

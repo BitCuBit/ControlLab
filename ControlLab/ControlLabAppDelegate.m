@@ -19,6 +19,7 @@
     NSString *urlCam1 = @"http://shanon.iuii.ua.es/cam1/"; // Just an example
     NSString *urlCam2 = @"http://shanon.iuii.ua.es/cam2/"; // Just an example
     NSString *urlCam3 = @"http://shanon.iuii.ua.es/cam3/"; // Just an example
+    NSNumber *gyroscope = [[NSNumber alloc] initWithInt:1];
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 
     if (standardUserDefaults) {
@@ -27,6 +28,7 @@
         [standardUserDefaults setObject:[NSString stringWithString:urlCam1] forKey:@"urlcam1"];
         [standardUserDefaults setObject:[NSString stringWithString:urlCam2] forKey:@"urlcam2"];
         [standardUserDefaults setObject:[NSString stringWithString:urlCam3] forKey:@"urlcam3"];
+        [standardUserDefaults setObject:gyroscope forKey:@"gyroscope"];
         [standardUserDefaults synchronize];
     }
 

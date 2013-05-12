@@ -128,13 +128,13 @@
             [onoff addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
 
             label3 = [[UILabel alloc ]initWithFrame:CGRectMake(60, 160, 50, 30)];
-            [label3 setText:@"On"];
+            [label3 setText:@"Off"];
             [label3 setBackgroundColor:color];
             label3.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
             [label3 setTextAlignment: NSTextAlignmentLeft];
 
             label4 = [[UILabel alloc ]initWithFrame:CGRectMake(190, 160, 50, 30)];
-            [label4 setText:@"Off"];
+            [label4 setText:@"On"];
             [label4 setBackgroundColor:color];
             label4.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
             [label4 setTextAlignment: NSTextAlignmentRight];
@@ -152,8 +152,23 @@
     return self;
 }
 - (IBAction)flip:(id)sender {
-    if (onoff.on) NSLog(@"On");
-    else  NSLog(@"Off");
+    NSNumber *gyroscope = [[NSNumber alloc] initWithInt:1];
+
+    if (onoff.on) {
+        NSLog(@"On");
+        gyroscope = [[NSNumber alloc] initWithInt:1];
+    }
+    else {
+        NSLog(@"Off");
+        gyroscope = [[NSNumber alloc] initWithInt:0];
+    }
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+
+    if (standardUserDefaults) {
+        [standardUserDefaults setObject:gyroscope forKey:@"gyroscope"];
+        [standardUserDefaults synchronize];
+    }
+
 }
 
 -(IBAction) sliderAction:(id) sender{

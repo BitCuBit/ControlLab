@@ -34,6 +34,9 @@
             user = [standardUserDefaults objectForKey:@"usuario"];
             pass = [standardUserDefaults objectForKey:@"password"];
             fullURL = [standardUserDefaults objectForKey:@"urlcam2"];
+            //            NSLog(@"Url: %@", fullURL);
+            //            NSLog(@"User: %@", user);
+            //            NSLog(@"Pass: %@", pass);
         }
         // Configuration border and window
         // Round corners using CALayer property
@@ -48,7 +51,7 @@
 
 
         url = [NSURL URLWithString:fullURL];
-        requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+        requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:30.0];
 
         // create the connection with the request
         // and start loading the data
@@ -69,7 +72,7 @@
 // Check for URLConnection failure
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    NSLog(@"Error Connection");
+    NSLog(@"Error Connection %@", [error description]);
     UIAlertView *connectionError = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"Error connecting to page.  Please check your 3G and/or Wifi settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [connectionError show];
     self.hidden = true;
@@ -84,13 +87,14 @@
             newCredential = [NSURLCredential credentialWithUser:user
                                                        password:pass
                                                     persistence:NSURLCredentialPersistenceForSession];
+            NSLog (@"Authentication");
             [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
         }
         else
         {
             [[challenge sender] cancelAuthenticationChallenge:challenge];
 
-            NSLog (@"failed authentication");
+            NSLog (@"Failed authentication");
             UIAlertView *connectionError = [[UIAlertView alloc] initWithTitle:@"Authetication error" message:@"Error connecting to page.  User name and password are incorrect." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [connectionError show];
         }
@@ -106,7 +110,6 @@
 #pragma mark NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    //    NSLog(@"Connection Did Receive Response");
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
@@ -125,7 +128,6 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    //    NSLog(@"3. - Connection didReceiveData");
     if (receivedData == nil) {
         receivedData = [[NSMutableData alloc] init];
     }

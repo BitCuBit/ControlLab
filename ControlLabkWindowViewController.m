@@ -18,6 +18,8 @@
     UILabel *label4;
     UISlider *slider;
     ControlLabWebViewDevice *aWebView;
+    UIButton *buttonUp;
+    UIButton *buttonDown;
 
     NSString *fullURL;
     NSURL *url;
@@ -82,40 +84,52 @@
             bgLayer.frame = self.view.bounds;
             [self.view.layer insertSublayer:bgLayer atIndex:0];
 
-
             color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0];
 
 
-            label2 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 10, 200, 30)];
-            [label2 setText:@"Blind"];
-            [label2 setBackgroundColor:color];
-            label2.font = [UIFont fontWithName: @"MarkerFelt-Thin" size: 25.0];
-            [label2 setTextAlignment: NSTextAlignmentCenter];
+            label1 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 10, 200, 30)];
+            [label1 setText:@"Blind"];
+            [label1 setBackgroundColor:color];
+            label1.font = [UIFont fontWithName: @"MarkerFelt-Thin" size: 25.0];
+            [label1 setTextAlignment: NSTextAlignmentCenter];
 
-            onoff = [[UISwitch alloc] initWithFrame: CGRectMake(110, 60, 200, 60)];
-            [onoff addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
+            // BUTTON DOWN
 
-            label3 = [[UILabel alloc ]initWithFrame:CGRectMake(30, 60, 60, 30)];
-            [label3 setText:@"Down"];
-            [label3 setBackgroundColor:color];
-            label3.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
-            [label3 setTextAlignment: NSTextAlignmentLeft];
+            buttonDown = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [buttonDown addTarget:self action:@selector(pressedButtonDown:) forControlEvents:UIControlEventTouchUpInside];
 
-            label4 = [[UILabel alloc ]initWithFrame:CGRectMake(190, 60, 50, 30)];
-            [label4 setText:@"Up"];
-            [label4 setBackgroundColor:color];
-            label4.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
-            [label4 setTextAlignment: NSTextAlignmentRight];
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"iconDown.png"]];
+            [buttonDown setImage:image forState:UIControlStateNormal];
+            buttonDown.frame = CGRectMake(50, 60, 60, 40);
+            [[buttonDown layer] setCornerRadius:10];
+            [buttonDown setClipsToBounds:YES];
+            [[buttonDown layer] setBorderColor:
+             [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
+            [[buttonDown layer] setBorderWidth:2.75];
+
+            // BUTTON UP
+
+            buttonUp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [buttonUp addTarget:self action:@selector(pressedButtonUp:) forControlEvents:UIControlEventTouchUpInside];
+
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"iconUp.png"]];
+            [buttonUp setImage:image forState:UIControlStateNormal];
+            buttonUp.frame = CGRectMake(200, 60, 60, 40);
+
+            [[buttonUp layer] setCornerRadius:10];
+            [buttonUp setClipsToBounds:YES];
+            [[buttonUp layer] setBorderColor:
+             [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
+            [[buttonUp layer] setBorderWidth:2.75];
+
 
             // WEB VIEW
             aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,110,250,250)];
             // ADD ELEMENTS TO VIEW
-            [self.view addSubview:label2];
-            [self.view addSubview:onoff];
-            [self.view addSubview:label3];
-            [self.view addSubview:label4];
+            [self.view addSubview:label1];
             [self.view addSubview:aWebView];
-            
+            [self.view addSubview:buttonDown];
+            [self.view addSubview:buttonUp];
         }
 
 
@@ -126,6 +140,22 @@
     self->identify = device;
 }
 
+
+- (IBAction)pressedButtonDown:(id)sender {
+    NSLog(@"Button Pressed Down");
+    fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/2"];
+    url = [NSURL URLWithString:fullURL];
+    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+}
+
+- (IBAction)pressedButtonUp:(id)sender {
+    NSLog(@"Button Pressed Up");
+    fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/1"];
+    url = [NSURL URLWithString:fullURL];
+    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+}
 
 - (IBAction)flip:(id)sender {
     if (onoff.on) {
