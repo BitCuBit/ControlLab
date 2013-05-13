@@ -12,4 +12,5 @@
 @interface ControlLabWebViewDevice : UIImageView <NSURLConnectionDelegate>
 
 - (void) closeControlLabWebViewDevice;
+- (void) getIdDevice:(NSString*)device;
 @end

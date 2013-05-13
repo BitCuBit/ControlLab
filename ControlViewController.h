@@ -16,11 +16,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "Project.h"
+#import "ControlLabAppDelegate.h"
 
 // INTERFACES DEVICES
 #import "ControlLabkDoorViewController.h"
 #import "ControlLabkWindowViewController.h"
 #import "ControlLabCustomToolBar.h"
+#import "ControlLabkPannelViewController.h"
 
 // DEVICES
 #import "ControlLabNSDevice.h"
@@ -39,6 +41,7 @@
 
 - (void) updateFactor:(float)fact;
 - (void) updateFactorUpDown:(float)fact;
+- (void) loadGyroscope;
 
 
 @end

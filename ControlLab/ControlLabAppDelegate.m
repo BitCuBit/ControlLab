@@ -8,11 +8,17 @@
 
 #import "ControlLabAppDelegate.h"
 
-@implementation ControlLabAppDelegate
+@implementation ControlLabAppDelegate {
+
+}
+
+@synthesize mm;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    // Set Gyroscope
+    mm = [[CMMotionManager alloc] init];
 
     NSString *usuario = @"pcasado@dtic.ua.es"; // Just an example
     NSString *password = @"b78uxmM33r1"; // Just an example
@@ -20,6 +26,7 @@
     NSString *urlCam2 = @"http://shanon.iuii.ua.es/cam2/"; // Just an example
     NSString *urlCam3 = @"http://shanon.iuii.ua.es/cam3/"; // Just an example
     NSNumber *gyroscope = [[NSNumber alloc] initWithInt:1];
+    NSNumber *panGesture = [[NSNumber alloc] initWithInt:1];
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 
     if (standardUserDefaults) {
@@ -29,6 +36,7 @@
         [standardUserDefaults setObject:[NSString stringWithString:urlCam2] forKey:@"urlcam2"];
         [standardUserDefaults setObject:[NSString stringWithString:urlCam3] forKey:@"urlcam3"];
         [standardUserDefaults setObject:gyroscope forKey:@"gyroscope"];
+        [standardUserDefaults setObject:panGesture forKey:@"panGesture"];
         [standardUserDefaults synchronize];
     }
 

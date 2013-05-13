@@ -1,8 +1,8 @@
 //
-//  ControlLabkDoorViewController.h
+//  ControlLabkPannelViewController.h
 //  ControlLab
 //
-//  Created by Pablo Casado Varela on 26/03/13.
+//  Created by Pablo Casado Varela on 13/05/13.
 //  Copyright (c) 2013 Pablo Casado Varela. All rights reserved.
 //
 
@@ -12,13 +12,9 @@
 #import "ControlLabWebViewDevice.h"
 
 
-@interface ControlLabkDoorViewController : UIViewController<NSURLConnectionDelegate> {
+@interface ControlLabkPannelViewController : UIViewController<NSURLConnectionDelegate> {
     NSString *identify;
-
 }
-
-- (IBAction)flip:(id)sender;
-
 - (void) getIdentify:(NSString *)device;
 
 @end

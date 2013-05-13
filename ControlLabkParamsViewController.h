@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "ControlLabBackgroundLayer.h"
+#import "ControlLabAppDelegate.h"
 
 
 @interface ControlLabkParamsViewController : UIViewController <NSURLConnectionDelegate>

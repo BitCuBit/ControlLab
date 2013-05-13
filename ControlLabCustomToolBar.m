@@ -118,6 +118,8 @@
     popover.arrowDirection = FPPopoverNoArrow;
     popover.tint = FPPopoverLightGrayTint;
     [popover presentPopoverFromPoint:CGPointMake(10, 10)];
+
+
 }
 
 - (void) barbuttomItemActionKey {
@@ -131,6 +133,9 @@
     popover.tint = FPPopoverLightGrayTint;
     [popover presentPopoverFromPoint:CGPointMake(10, 10)];
 
+    // Stop CMMotionManager
+
+
 }
 
 - (void) barbuttomItemActionExit {
@@ -138,13 +143,11 @@
     exit(0);
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+
+-(void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    NSLog(@"Dismiss Popover");
+    // Stop CMMotionManager
+
 }
-*/
 
 @end

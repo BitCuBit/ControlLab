@@ -1,39 +1,38 @@
 //
-//  ControlLabkWindowViewController.m
+//  ControlLabkPannelViewController.m
 //  ControlLab
 //
-//  Created by Pablo Casado Varela on 26/03/13.
+//  Created by Pablo Casado Varela on 13/05/13.
 //  Copyright (c) 2013 Pablo Casado Varela. All rights reserved.
 //
 
-#import "ControlLabkWindowViewController.h"
+#import "ControlLabkPannelViewController.h"
 
-@interface ControlLabkWindowViewController () {
-    UISwitch *onoff;
-    CAGradientLayer *bgLayer;
-    UIColor *color;
-    UILabel *label1;
-    UILabel *label2;
-    UILabel *label3;
-    UILabel *label4;
-    UISlider *slider;
-    ControlLabWebViewDevice *aWebView;
-    UIButton *buttonUp;
-    UIButton *buttonDown;
+@interface ControlLabkPannelViewController () {
+        UISwitch *onoff;
+        CAGradientLayer *bgLayer;
+        UIColor *color;
+        UILabel *label1;
+        UILabel *label2;
+        UILabel *label3;
+        UILabel *label4;
+        UISlider *slider;
+        ControlLabWebViewDevice *aWebView;
+        UIButton *buttonUp;
+        UIButton *buttonDown;
 
-    NSString *fullURL;
-    NSURL *url;
-    NSMutableURLRequest  *requestObj;
-    NSURLConnection *connection;
-
-    int SliderAux;
-
-}
-
+        NSString *fullURL;
+        NSURL *url;
+        NSMutableURLRequest  *requestObj;
+        NSURLConnection *connection;
+        
+        int SliderAux;
+        
+    }
 
 @end
 
-@implementation ControlLabkWindowViewController
+@implementation ControlLabkPannelViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -88,7 +87,7 @@
 
 
             label1 = [[UILabel alloc ]initWithFrame:CGRectMake(50, 10, 200, 30)];
-            [label1 setText:@"Blind"];
+            [label1 setText:@"Pannel"];
             [label1 setBackgroundColor:color];
             label1.font = [UIFont fontWithName: @"MarkerFelt-Thin" size: 25.0];
             [label1 setTextAlignment: NSTextAlignmentCenter];
@@ -131,8 +130,8 @@
             [self.view addSubview:buttonDown];
             [self.view addSubview:buttonUp];
         }
-
-
+        
+        
     }
     return self;
 }
@@ -159,26 +158,6 @@
     connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
 }
 
-- (IBAction)flip:(id)sender {
-    if (onoff.on) {
-
-        fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/1"];
-        NSLog(@"Up");
-    }
-    else {
-
-        fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/2"];
-        NSLog(@"Down");
-    }
-    url = [NSURL URLWithString:fullURL];
-    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
-
-    // create the connection with the request
-    // and start loading the data
-    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
-
-
-}
 
 
 
@@ -194,7 +173,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)viewDidDisappear:(BOOL)animated {
-        NSLog(@"View Did Disappear");
+    NSLog(@"View Did Disappear");
     [aWebView closeControlLabWebViewDevice];
     [connection cancel];
 }
@@ -227,8 +206,5 @@
         }
     }
 }
-
-
-
 
 @end

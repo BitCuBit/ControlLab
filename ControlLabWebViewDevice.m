@@ -9,7 +9,9 @@
 #import "ControlLabWebViewDevice.h"
 
 @implementation ControlLabWebViewDevice {
-    NSString *fullURL;
+    NSString *fullURL1;
+    NSString *fullURL2;
+    NSString *fullURL3;
     NSURL *url;
     NSMutableURLRequest  *requestObj;
     NSURLConnection *connection;
@@ -33,7 +35,9 @@
         if (standardUserDefaults) {
             user = [standardUserDefaults objectForKey:@"usuario"];
             pass = [standardUserDefaults objectForKey:@"password"];
-            fullURL = [standardUserDefaults objectForKey:@"urlcam2"];
+            fullURL1 = [standardUserDefaults objectForKey:@"urlcam1"];
+            fullURL2 = [standardUserDefaults objectForKey:@"urlcam2"];
+            fullURL3 = [standardUserDefaults objectForKey:@"urlcam3"];
             //            NSLog(@"Url: %@", fullURL);
             //            NSLog(@"User: %@", user);
             //            NSLog(@"Pass: %@", pass);
@@ -50,24 +54,35 @@
 
 
 
-        url = [NSURL URLWithString:fullURL];
-        requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:30.0];
-
-        // create the connection with the request
-        // and start loading the data
-        connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
-
-        if (connection) {
-            receivedData = [NSMutableData data];
-
-        } else {
-        }
 
     }
     return self;
 }
 
+- (void) getIdDevice:(NSString*)device {
+    NSLog(@"Device in web view: %@", device);
+    if ([device isEqualToString:@"33"]) {
+            url = [NSURL URLWithString:fullURL1];
+    }
+    else if ([device isEqualToString:@""]) {
+        url = [NSURL URLWithString:fullURL3];
 
+    }
+    else
+        url = [NSURL URLWithString:fullURL2];
+    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:30.0];
+
+    // create the connection with the request
+    // and start loading the data
+    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+
+    if (connection) {
+        receivedData = [NSMutableData data];
+
+    } else {
+    }
+
+}
 
 // Check for URLConnection failure
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

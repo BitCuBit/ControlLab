@@ -49,6 +49,7 @@
 		5376AA65172A6DBF007A4E3E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5376AA64172A6DBF007A4E3E /* MobileCoreServices.framework */; };
 		5376AA67172A802B007A4E3E /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5376AA66172A802B007A4E3E /* libz.1.2.5.dylib */; };
 		5376AA69172A8047007A4E3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5376AA68172A8047007A4E3E /* libz.dylib */; };
+		537CC5BB1741080200E3F7F0 /* ControlLabkPannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CC5BA1741080200E3F7F0 /* ControlLabkPannelViewController.m */; };
 		5383948A16D3C51100BEA478 /* ControlViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5383948916D3C51100BEA478 /* ControlViewController.mm */; };
 		539C566B16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */; };
 		539C566D16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */; };
@@ -118,6 +119,8 @@
 		5376AA64172A6DBF007A4E3E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5376AA66172A802B007A4E3E /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		5376AA68172A8047007A4E3E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		537CC5B91741080200E3F7F0 /* ControlLabkPannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkPannelViewController.h; sourceTree = "<group>"; };
+		537CC5BA1741080200E3F7F0 /* ControlLabkPannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkPannelViewController.m; sourceTree = "<group>"; };
 		5383948816D3C51100BEA478 /* ControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlViewController.h; sourceTree = "<group>"; };
 		5383948916D3C51100BEA478 /* ControlViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlViewController.mm; sourceTree = "<group>"; };
 		539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPad.png; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */,
 				53DA2FB917019DF700D9F167 /* ControlLabkDoorViewController.h */,
 				53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */,
+				537CC5B91741080200E3F7F0 /* ControlLabkPannelViewController.h */,
+				537CC5BA1741080200E3F7F0 /* ControlLabkPannelViewController.m */,
 			);
 			name = ViewControllerDevice;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				53216DE0171C12FA00F1221F /* FPTouchView.m in Sources */,
 				53353ED71730057700169229 /* ControlLabkKeyViewController.m in Sources */,
 				53567C6F17311C0700F298FA /* ControlLabkParamsViewController.m in Sources */,
+				537CC5BB1741080200E3F7F0 /* ControlLabkPannelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

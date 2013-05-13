@@ -20,13 +20,14 @@
     GLKTextureInfo *textureRight;
     GLKTextureInfo *textureTop;
     GLKTextureInfo *textureBottom;
-    CMMotionManager *mm;
+    //    CMMotionManager *mm;
     NSOperationQueue *queueAccelerometer;
     NSOperationQueue *queueGyroscope;
     float factor;
     float factorUpDown;
     float ant;
     float antUpDown;
+    float kFactorUpdate;
 
     UISwitch *onoff;
     GLfloat __modelview[16];
@@ -39,7 +40,6 @@
 
 #define kFilteringFactor 0.1
 #define kAccelerometerFrequency 60.0 //Hz
-#define kFactorUpdate 0.01
 
 #define kYMaxLandscapeRight 768.0
 #define kXMaxLandscapeRight 1028.0
@@ -178,29 +178,40 @@ static const SceneVertex doorA [] = {
     float fromLeftToRight = x - ant;
     float fromUptoDown = y - antUpDown;
 
-    if (fromLeftToRight > 0.5) {
-        [self updateFactor:0.03];
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *activo;
+    if (standardUserDefaults) {
+        activo = [[NSNumber alloc] init] ;
+        activo = [standardUserDefaults objectForKey:@"panGesture"];
 
     }
-    else if (fromLeftToRight < -0.5){
-        [self updateFactor:-0.03];
+    if ([activo isEqualToNumber:[NSNumber numberWithInt:1]]) {
+        if (fromLeftToRight > 0.5) {
+            [self updateFactor:0.03];
+
+        }
+        else if (fromLeftToRight < -0.5){
+            [self updateFactor:-0.03];
+
+        }
+        else
+            [self updateFactor:0.0];
+
+        if (fromUptoDown > 0.5) {
+            [self updateFactorUpDown:-0.03];
+
+        }
+        else if (fromUptoDown < -0.5){
+            [self updateFactorUpDown:0.03];
+            
+        }
+        else
+            [self updateFactorUpDown:0.0];
+        ant = x;
+        antUpDown = y;
 
     }
-    else
-        [self updateFactor:0.0];
 
-    if (fromUptoDown > 0.5) {
-        [self updateFactorUpDown:-0.03];
-
-    }
-    else if (fromUptoDown < -0.5){
-        [self updateFactorUpDown:0.03];
-
-    }
-    else
-        [self updateFactorUpDown:0.0];
-    ant = x;
-    antUpDown = y;
 
 
 }
@@ -259,6 +270,9 @@ static const SceneVertex doorA [] = {
             }
             if ([d getTypeOfDevice] == kDoors) {
                 [self drawInterfaceDeviceDoor:[d getIdentificador]];
+            }
+            if ([d getTypeOfDevice] == kPannel) {
+                [self drawInterfaceDevicePannel:[d getIdentificador]];
             }
         }
     }
@@ -421,12 +435,14 @@ static const SceneVertex doorA [] = {
 
 - (void) drawInterfaceDeviceDoor:(NSString *)device {
     ControlLabkDoorViewController *vc = [[ControlLabkDoorViewController alloc] initWithNibName:nil bundle:nil];
-
+    [vc getIdentify:device];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);
     [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
-    [self stopGyroscope];
+
+    // Stop CMMotionManager
+
 
 
 }
@@ -438,14 +454,24 @@ static const SceneVertex doorA [] = {
     popover.delegate = self;
     popover.popoverContentSize = CGSizeMake(300, 600);
     [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
-    [self stopGyroscope];
+
+}
+
+- (void) drawInterfaceDevicePannel:(NSString *)device {
+    ControlLabkPannelViewController *vc = [[ControlLabkPannelViewController alloc] initWithNibName:nil bundle:nil];
+    [vc getIdentify:device];
+    popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
+    popover.delegate = self;
+    popover.popoverContentSize = CGSizeMake(300, 600);
+    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
+
 }
 
 
 
 -(void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     NSLog(@"Popover dismissed");
-    [self loadGyroscope];
+    // Stop CMMotionManager
 }
 
 
@@ -458,8 +484,9 @@ static const SceneVertex doorA [] = {
 
     factor = 0.0;
     factorUpDown = 0.0;
+    kFactorUpdate = 0.01;
 
-    mm = [[CMMotionManager alloc] init];
+    //    mm = [[CMMotionManager alloc] init];
 
     GLKView *view = (GLKView *)self.view;
     NSAssert([view isKindOfClass:[GLKView class]], @"View Controller´s view is not a GLKView");
@@ -514,7 +541,7 @@ static const SceneVertex doorA [] = {
     [devices addObject:window3];
 
     ControlLabNSDevice *pannel = [[ControlLabNSDevice alloc] initWithFirstCoordinate:panelTV[0] andSecond:panelTV[1] andThird:panelTV[2] andFourth:panelTV[3]];
-    [pannel setIdDevice:@"" andName:@"Pannel" andType:kPannel];
+    [pannel setIdDevice:@"5" andName:@"Pannel" andType:kPannel];
     [devices addObject:pannel];
 
 }
@@ -524,6 +551,11 @@ static const SceneVertex doorA [] = {
 
 - (void) loadGyroscope {
 
+    CMMotionManager *mm = [[CMMotionManager alloc] init];
+    ControlLabAppDelegate *appDelegate = (ControlLabAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    mm = appDelegate.mm;
+    
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     NSNumber *activo;
     if (standardUserDefaults) {
@@ -532,6 +564,11 @@ static const SceneVertex doorA [] = {
 
     }
     if ([activo isEqualToNumber:[NSNumber numberWithInt:0]]) {
+        CMMotionManager *mm = [[CMMotionManager alloc] init];
+        ControlLabAppDelegate *appDelegate = (ControlLabAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+        mm = appDelegate.mm;
+
         [mm stopGyroUpdates];
 
     }
@@ -580,8 +617,15 @@ static const SceneVertex doorA [] = {
 }
 
 - (void) stopGyroscope{
-    [mm stopGyroUpdates];
-    
+    // Stop CMMotionManager
+    NSNumber *gyroscope = [[NSNumber alloc] initWithInt:0];
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+
+    if (standardUserDefaults) {
+        [standardUserDefaults setObject:gyroscope forKey:@"gyroscope"];
+        [standardUserDefaults synchronize];
+    }
+
 }
 
 
@@ -808,7 +852,6 @@ static const SceneVertex doorA [] = {
 }
 
 - (void) glkViewControllerUpdate:(GLKViewController *)controller {
-
     [self loadGyroscope];
 
 }

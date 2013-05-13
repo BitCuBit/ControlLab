@@ -113,6 +113,12 @@
     return self;
 }
 
+- (void) getIdentify:(NSString *)device {
+    self->identify = device;
+    // Envio el Identificador a Web View para que obtenga la camara correcta
+    [aWebView getIdDevice:device];
+}
+
 - (IBAction)flip:(id)sender {
     if (onoff.on) NSLog(@"On");
     else  NSLog(@"Off");
