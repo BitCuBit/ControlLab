@@ -20,7 +20,6 @@
     GLKTextureInfo *textureRight;
     GLKTextureInfo *textureTop;
     GLKTextureInfo *textureBottom;
-    //    CMMotionManager *mm;
     NSOperationQueue *queueAccelerometer;
     NSOperationQueue *queueGyroscope;
     float factor;
@@ -441,9 +440,6 @@ static const SceneVertex doorA [] = {
     popover.popoverContentSize = CGSizeMake(300, 600);
     [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
 
-    // Stop CMMotionManager
-
-
 
 }
 
@@ -462,8 +458,8 @@ static const SceneVertex doorA [] = {
     [vc getIdentify:device];
     popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
     popover.delegate = self;
-    popover.popoverContentSize = CGSizeMake(300, 600);
-    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
+    popover.popoverContentSize = CGSizeMake(300, 620);
+    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 650) inView:self.view permittedArrowDirections: 0 animated:YES];
 
 }
 
@@ -471,7 +467,6 @@ static const SceneVertex doorA [] = {
 
 -(void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     NSLog(@"Popover dismissed");
-    // Stop CMMotionManager
 }
 
 
@@ -485,8 +480,6 @@ static const SceneVertex doorA [] = {
     factor = 0.0;
     factorUpDown = 0.0;
     kFactorUpdate = 0.01;
-
-    //    mm = [[CMMotionManager alloc] init];
 
     GLKView *view = (GLKView *)self.view;
     NSAssert([view isKindOfClass:[GLKView class]], @"View Controller´s view is not a GLKView");

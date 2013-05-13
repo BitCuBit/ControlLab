@@ -92,48 +92,63 @@
             label1.font = [UIFont fontWithName: @"MarkerFelt-Thin" size: 25.0];
             [label1 setTextAlignment: NSTextAlignmentCenter];
 
-            // BUTTON DOWN
-
-            buttonDown = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [buttonDown addTarget:self action:@selector(pressedButtonDown:) forControlEvents:UIControlEventTouchUpInside];
-
-            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"iconDown.png"]];
-            [buttonDown setImage:image forState:UIControlStateNormal];
-            buttonDown.frame = CGRectMake(50, 60, 60, 40);
-            [[buttonDown layer] setCornerRadius:10];
-            [buttonDown setClipsToBounds:YES];
-            [[buttonDown layer] setBorderColor:
-             [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
-            [[buttonDown layer] setBorderWidth:2.75];
-
-            // BUTTON UP
-
-            buttonUp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [buttonUp addTarget:self action:@selector(pressedButtonUp:) forControlEvents:UIControlEventTouchUpInside];
-
-            image = [UIImage imageNamed:[NSString stringWithFormat:@"iconUp.png"]];
-            [buttonUp setImage:image forState:UIControlStateNormal];
-            buttonUp.frame = CGRectMake(200, 60, 60, 40);
-
-            [[buttonUp layer] setCornerRadius:10];
-            [buttonUp setClipsToBounds:YES];
-            [[buttonUp layer] setBorderColor:
-             [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
-            [[buttonUp layer] setBorderWidth:2.75];
-
-
             // WEB VIEW
-            aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,110,250,250)];
+            aWebView =[[ControlLabWebViewDevice alloc] initWithFrame:CGRectMake(25,310,250,250)];
+
+            // WHEEL OF COLOR
+            colorWheel = [[ISColorWheel alloc] initWithFrame:CGRectMake(25,50,250,250)];
+            colorWheel.delegate = self;
+            colorWheel.continuous = true;
+            [[colorWheel layer] setCornerRadius:10];
+            [colorWheel setClipsToBounds:YES];
+
+            [[colorWheel layer] setBorderColor:
+             [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
+            [[colorWheel layer] setBorderWidth:2.75];
+
+            UITapGestureRecognizer *singleFingerTap =
+            [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                    action:@selector(handleSingleTap:)];
+            [colorWheel addGestureRecognizer:singleFingerTap];
+            [self.view addSubview:colorWheel];
             // ADD ELEMENTS TO VIEW
             [self.view addSubview:label1];
             [self.view addSubview:aWebView];
-            [self.view addSubview:buttonDown];
-            [self.view addSubview:buttonUp];
         }
         
         
     }
     return self;
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    const CGFloat *components = CGColorGetComponents(colorWheel.currentColor.CGColor);
+    CGFloat red = components[0]*254;
+    CGFloat green = components[1]*254;
+    CGFloat blue = components[2]*254;
+    NSLog(@"Red: %.f", red);
+    NSLog(@"Green: %.f", green);
+    NSLog(@"Blue: %.f", blue);
+    fullURL = [NSString stringWithFormat:@"%@/%@/%@/%.f", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/dimmerRed", red];
+    NSLog(@"url: %@", fullURL);
+    url = [NSURL URLWithString:fullURL];
+    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+
+    fullURL = [NSString stringWithFormat:@"%@/%@/%@/%.f", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/dimmerGreen", green];
+    NSLog(@"url: %@", fullURL);
+    url = [NSURL URLWithString:fullURL];
+    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+
+    fullURL = [NSString stringWithFormat:@"%@/%@/%@/%.f", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/dimmerBlue", blue];
+    NSLog(@"url: %@", fullURL);
+    url = [NSURL URLWithString:fullURL];
+    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+
+
+    //Do stuff here...
 }
 - (void) getIdentify:(NSString *)device {
     self->identify = device;
@@ -142,21 +157,12 @@
 }
 
 
-- (IBAction)pressedButtonDown:(id)sender {
-    NSLog(@"Button Pressed Down");
-    fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/2"];
-    url = [NSURL URLWithString:fullURL];
-    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
-    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+- (void)colorWheelDidChangeColor:(ISColorWheel *)colorWhee
+{
 }
 
-- (IBAction)pressedButtonUp:(id)sender {
-    NSLog(@"Button Pressed Up");
-    fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/1"];
-    url = [NSURL URLWithString:fullURL];
-    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
-    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
-}
+
+
 
 
 

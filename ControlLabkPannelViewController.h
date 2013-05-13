@@ -10,10 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ControlLabBackgroundLayer.h"
 #import "ControlLabWebViewDevice.h"
+#import "ISColorWheel.h"
 
 
-@interface ControlLabkPannelViewController : UIViewController<NSURLConnectionDelegate> {
+@interface ControlLabkPannelViewController : UIViewController<NSURLConnectionDelegate, ISColorWheelDelegate> {
     NSString *identify;
+    ISColorWheel* colorWheel;
 }
 - (void) getIdentify:(NSString *)device;
 
