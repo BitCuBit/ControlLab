@@ -146,6 +146,13 @@ static const SceneVertex windowsB [] = {
     {{ 5.0f,  5.0f, 5.0f}, { 0.1f, 0.1f, 0.1f, 0.6f}} //3
 };
 
+static const SceneVertex light29 [] = {
+    {{-3.0f,  5.0f, 3.0f}, { 1.0f, 0.1f, 0.1f, 0.6f}},//20
+    {{-3.0f,  5.0f,-0.7f}, { 1.0f, 0.1f, 0.1f, 0.6f}},//21
+    {{ 0.7f,  5.0f, 3.0f}, { 1.0f, 0.1f, 0.1f, 0.6f}},//22
+    {{ 0.7f,  5.0f,-0.7f}, { 1.0f, 0.1f, 0.1f, 0.6f}} //23
+};
+
 static const SceneVertex doorA [] = {
     {{-3.9f, -1.35f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//0
     {{-3.9f,  1.7f, 4.95f}, { 0.1f, 0.1f, 0.1f, 0.6f}},//1
@@ -272,6 +279,9 @@ static const SceneVertex doorA [] = {
             }
             if ([d getTypeOfDevice] == kPannel) {
                 [self drawInterfaceDevicePannel:[d getIdentificador]];
+            }
+            if ([d getTypeOfDevice] == kLight) {
+                [self drawInterfaceDeviceLight:[d getIdentificador]];
             }
         }
     }
@@ -462,6 +472,16 @@ static const SceneVertex doorA [] = {
     [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 650) inView:self.view permittedArrowDirections: 0 animated:YES];
 
 }
+- (void) drawInterfaceDeviceLight:(NSString *)device {
+
+    ControlLabkLightViewController *vc = [[ControlLabkLightViewController alloc] initWithNibName:nil bundle:nil];
+    [vc getIdentify:device];
+    popover = [[UIPopoverController alloc ]initWithContentViewController:vc];
+    popover.delegate = self;
+    popover.popoverContentSize = CGSizeMake(300, 600);
+    [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections: 0 animated:YES];
+
+}
 
 
 
@@ -536,6 +556,10 @@ static const SceneVertex doorA [] = {
     ControlLabNSDevice *pannel = [[ControlLabNSDevice alloc] initWithFirstCoordinate:panelTV[0] andSecond:panelTV[1] andThird:panelTV[2] andFourth:panelTV[3]];
     [pannel setIdDevice:@"5" andName:@"Pannel" andType:kPannel];
     [devices addObject:pannel];
+    
+    ControlLabNSDevice *light1 = [[ControlLabNSDevice alloc] initWithFirstCoordinate:light29[0] andSecond:light29[1] andThird:light29[2] andFourth:light29[3]];
+    [light1 setIdDevice:@"29" andName:@"Lighting" andType:kLight];
+    [devices addObject:light1];
 
 }
 
@@ -747,8 +771,8 @@ static const SceneVertex doorA [] = {
     [baseEffect prepareToDraw];
 
 
-    //   [self drawDevice:kWindows];
-    //    [self drawDevice:kDoors];
+       [self drawDevice:kWindows];
+    [self drawDevice:kDoors];
 
 
     glDisableVertexAttribArray(GLKVertexAttribPosition);

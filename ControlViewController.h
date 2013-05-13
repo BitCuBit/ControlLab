@@ -23,6 +23,7 @@
 #import "ControlLabkWindowViewController.h"
 #import "ControlLabCustomToolBar.h"
 #import "ControlLabkPannelViewController.h"
+#import "ControlLabkLightViewController.h"
 
 // DEVICES
 #import "ControlLabNSDevice.h"
