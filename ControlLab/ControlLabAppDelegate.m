@@ -20,8 +20,8 @@
     // Set Gyroscope
     mm = [[CMMotionManager alloc] init];
 
-    NSString *usuario = @"pcasado@dtic.ua.es"; // Just an example
-    NSString *password = @"b78uxmM33r1"; // Just an example
+    //    NSString *usuario = @"pcasado@dtic.ua.es"; // Just an example
+    //    NSString *password = @"b78uxmM33r1"; // Just an example
     NSString *urlCam1 = @"http://shanon.iuii.ua.es/cam1/"; // Just an example
     NSString *urlCam2 = @"http://shanon.iuii.ua.es/cam2/"; // Just an example
     NSString *urlCam3 = @"http://shanon.iuii.ua.es/cam3/"; // Just an example
@@ -30,8 +30,8 @@
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 
     if (standardUserDefaults) {
-        [standardUserDefaults setObject:[NSString stringWithString:usuario] forKey:@"usuario"];
-        [standardUserDefaults setObject:[NSString stringWithString:password] forKey:@"password"];
+        //        [standardUserDefaults setObject:[NSString stringWithString:usuario] forKey:@"usuario"];
+        //        [standardUserDefaults setObject:[NSString stringWithString:password] forKey:@"password"];
         [standardUserDefaults setObject:[NSString stringWithString:urlCam1] forKey:@"urlcam1"];
         [standardUserDefaults setObject:[NSString stringWithString:urlCam2] forKey:@"urlcam2"];
         [standardUserDefaults setObject:[NSString stringWithString:urlCam3] forKey:@"urlcam3"];

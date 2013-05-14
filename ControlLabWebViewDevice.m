@@ -38,9 +38,6 @@
             fullURL1 = [standardUserDefaults objectForKey:@"urlcam1"];
             fullURL2 = [standardUserDefaults objectForKey:@"urlcam2"];
             fullURL3 = [standardUserDefaults objectForKey:@"urlcam3"];
-            //            NSLog(@"Url: %@", fullURL);
-            //            NSLog(@"User: %@", user);
-            //            NSLog(@"Pass: %@", pass);
         }
         // Configuration border and window
         // Round corners using CALayer property

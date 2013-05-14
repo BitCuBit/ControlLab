@@ -771,8 +771,8 @@ static const SceneVertex doorA [] = {
     [baseEffect prepareToDraw];
 
 
-       [self drawDevice:kWindows];
-    [self drawDevice:kDoors];
+    //   [self drawDevice:kWindows];
+    //   [self drawDevice:kDoors];
 
 
     glDisableVertexAttribArray(GLKVertexAttribPosition);

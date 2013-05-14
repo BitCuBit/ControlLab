@@ -29,7 +29,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        // Initialization code
+        NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *user;
+        NSString *pass;
 
+        if (standardUserDefaults) {
+            user = [standardUserDefaults objectForKey:@"usuario"];
+            pass = [standardUserDefaults objectForKey:@"password"];
+        }
         [self.view setBounds:CGRectMake(0, 0, 280, 250)];
         // Custom initialization
         NSString *deviceType = [UIDevice currentDevice].model;
@@ -54,11 +62,13 @@
             textFieldUser = [[UITextField alloc] initWithFrame:CGRectMake(20, 60, 200, 30)];
             textFieldUser.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
             textFieldUser.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-            textFieldUser.text = @"pcasado@dtic.ua.es";
+            textFieldUser.text = user;
             textFieldUser.userInteractionEnabled = YES;
             textFieldUser.borderStyle = UITextBorderStyleRoundedRect;
             textFieldUser.clearButtonMode = UITextFieldViewModeWhileEditing;
             [textFieldUser setEnabled:YES];
+            [textFieldUser addTarget:self action:@selector(hideKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
+
             [textFieldUser becomeFirstResponder];
 
             label2 = [[UILabel alloc ]initWithFrame:CGRectMake(20, 110, 200, 30)];
@@ -70,11 +80,12 @@
             textFieldPass = [[UITextField alloc] initWithFrame:CGRectMake(20, 160, 200, 30)];
             textFieldPass.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
             textFieldPass.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-            textFieldPass.text = @"b78uxmM33r1";
+            textFieldPass.text = pass;
             textFieldPass.userInteractionEnabled = YES;
             textFieldPass.borderStyle = UITextBorderStyleRoundedRect;
             textFieldPass.clearButtonMode = UITextFieldViewModeWhileEditing;
             textFieldPass.secureTextEntry = YES;
+            [textFieldPass addTarget:self action:@selector(hideKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
             [textFieldPass setEnabled:YES];
 
 
@@ -107,7 +118,7 @@
             textFieldUser = [[UITextField alloc] initWithFrame:CGRectMake(20, 60, 200, 30)];
             textFieldUser.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
             textFieldUser.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-            textFieldUser.text = @"pcasado@dtic.ua.es";
+            textFieldUser.text = user;
             textFieldUser.userInteractionEnabled = YES;
             textFieldUser.borderStyle = UITextBorderStyleRoundedRect;
             textFieldUser.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -123,7 +134,7 @@
             textFieldPass = [[UITextField alloc] initWithFrame:CGRectMake(20, 160, 200, 30)];
             textFieldPass.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
             textFieldPass.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-            textFieldPass.text = @"b78uxmM33r1";
+            textFieldPass.text = pass;
             textFieldPass.userInteractionEnabled = YES;
             textFieldPass.borderStyle = UITextBorderStyleRoundedRect;
             textFieldPass.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -140,6 +151,24 @@
 
     }
     return self;
+}
+
+- (IBAction)hideKeyboard:(id)sender {
+    NSString *usuario = textFieldUser.text;
+    NSString *password = textFieldPass.text;
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"usuario %@", usuario);
+    NSLog(@"password %@", password);
+
+    if (standardUserDefaults) {
+        [standardUserDefaults setObject:[NSString stringWithString:usuario] forKey:@"usuario"];
+        [standardUserDefaults setObject:[NSString stringWithString:password] forKey:@"password"];
+        [standardUserDefaults synchronize];
+    }
+
+    [sender resignFirstResponder];
+
+    
 }
 
 - (void)viewDidLoad
