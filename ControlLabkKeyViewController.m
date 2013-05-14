@@ -17,6 +17,8 @@
     UILabel *label4;
     UITextField *textFieldUser;
     UITextField *textFieldPass;
+    UIButton *button;
+
 
 }
 
@@ -109,13 +111,13 @@
             color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0];
 
 
-            label1 = [[UILabel alloc ]initWithFrame:CGRectMake(20, 10, 200, 30)];
+            label1 = [[UILabel alloc ]initWithFrame:CGRectMake(20, 5, 200, 30)];
             [label1 setText:@"User"];
             [label1 setBackgroundColor:color];
             label1.font = [UIFont fontWithName: @"MarkerFelt-Thin" size: 25.0];
             [label1 setTextAlignment: NSTextAlignmentLeft];
 
-            textFieldUser = [[UITextField alloc] initWithFrame:CGRectMake(20, 60, 200, 30)];
+            textFieldUser = [[UITextField alloc] initWithFrame:CGRectMake(20, 55, 200, 30)];
             textFieldUser.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
             textFieldUser.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
             textFieldUser.text = user;
@@ -125,13 +127,13 @@
             [textFieldUser setEnabled:YES];
             [textFieldUser becomeFirstResponder];
 
-            label2 = [[UILabel alloc ]initWithFrame:CGRectMake(20, 110, 200, 30)];
+            label2 = [[UILabel alloc ]initWithFrame:CGRectMake(20, 105, 200, 30)];
             [label2 setText:@"Password"];
             [label2 setBackgroundColor:color];
             label2.font = [UIFont fontWithName:@"MarkerFelt-Thin" size: 25.0];
             [label2 setTextAlignment: NSTextAlignmentLeft];
 
-            textFieldPass = [[UITextField alloc] initWithFrame:CGRectMake(20, 160, 200, 30)];
+            textFieldPass = [[UITextField alloc] initWithFrame:CGRectMake(20, 155, 200, 30)];
             textFieldPass.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
             textFieldPass.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
             textFieldPass.text = pass;
@@ -141,21 +143,35 @@
             textFieldPass.secureTextEntry = YES;
             [textFieldPass setEnabled:YES];
 
+            // BUTTON SAVE
+            button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [button addTarget:self action:@selector(pressedButtonSave:) forControlEvents:UIControlEventTouchUpInside];
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"key.png"]];
+            [button setImage:image forState:UIControlStateNormal];
+            button.frame = CGRectMake(100, 200, 60, 40);
+            [[button layer] setCornerRadius:10];
+            [button setClipsToBounds:YES];
+            [[button layer] setBorderColor:
+             [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
+            [[button layer] setBorderWidth:2.75];
 
             // ADD ELEMENTS TO VIEW
             [self.view addSubview:label1];
             [self.view addSubview:label2];
             [self.view addSubview:textFieldUser];
             [self.view addSubview:textFieldPass];
+            [self.view addSubview:button];
         }
 
     }
     return self;
 }
 
-- (IBAction)hideKeyboard:(id)sender {
+- (IBAction)pressedButtonSave:(id)sender {
+    NSLog(@"Hide Keyboard");
     NSString *usuario = textFieldUser.text;
     NSString *password = textFieldPass.text;
+
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"usuario %@", usuario);
     NSLog(@"password %@", password);

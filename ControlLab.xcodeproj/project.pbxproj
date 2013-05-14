@@ -52,11 +52,12 @@
 		537CC5BB1741080200E3F7F0 /* ControlLabkPannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CC5BA1741080200E3F7F0 /* ControlLabkPannelViewController.m */; };
 		537CC5C31741230400E3F7F0 /* ISColorWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CC5C21741230400E3F7F0 /* ISColorWheel.m */; };
 		537CC5C6174140E000E3F7F0 /* ControlLabkLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CC5C5174140DF00E3F7F0 /* ControlLabkLightViewController.m */; };
-		537CC5C9174142E500E3F7F0 /* iconLightOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 537CC5C7174142E500E3F7F0 /* iconLightOff.png */; };
-		537CC5CA174142E500E3F7F0 /* iconLightOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 537CC5C8174142E500E3F7F0 /* iconLightOn.png */; };
 		5383948A16D3C51100BEA478 /* ControlViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5383948916D3C51100BEA478 /* ControlViewController.mm */; };
 		539C566B16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */; };
 		539C566D16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */; };
+		53C5A41C17427F7B004C3F5A /* iconStop.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C5A41B17427F7B004C3F5A /* iconStop.png */; };
+		53C5A422174282A5004C3F5A /* iconLightOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C5A421174282A5004C3F5A /* iconLightOn.png */; };
+		53C5A424174288A0004C3F5A /* iconLightOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C5A423174288A0004C3F5A /* iconLightOff.png */; };
 		53DA2FBB17019DF700D9F167 /* ControlLabkDoorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */; };
 		53DA2FBE17019FB500D9F167 /* ControlLabkWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DA2FBD17019FB500D9F167 /* ControlLabkWindowViewController.m */; };
 		53DA2FC21701C31300D9F167 /* backgroundPopover.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DA2FC11701C31300D9F167 /* backgroundPopover.png */; };
@@ -129,12 +130,13 @@
 		537CC5C21741230400E3F7F0 /* ISColorWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISColorWheel.m; sourceTree = "<group>"; };
 		537CC5C4174140DF00E3F7F0 /* ControlLabkLightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkLightViewController.h; sourceTree = "<group>"; };
 		537CC5C5174140DF00E3F7F0 /* ControlLabkLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkLightViewController.m; sourceTree = "<group>"; };
-		537CC5C7174142E500E3F7F0 /* iconLightOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLightOff.png; sourceTree = "<group>"; };
-		537CC5C8174142E500E3F7F0 /* iconLightOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLightOn.png; sourceTree = "<group>"; };
 		5383948816D3C51100BEA478 /* ControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlViewController.h; sourceTree = "<group>"; };
 		5383948916D3C51100BEA478 /* ControlViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlViewController.mm; sourceTree = "<group>"; };
 		539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPad.png; sourceTree = "<group>"; };
 		539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DAIlogoLargeIcon_iPhone.png; sourceTree = "<group>"; };
+		53C5A41B17427F7B004C3F5A /* iconStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconStop.png; sourceTree = "<group>"; };
+		53C5A421174282A5004C3F5A /* iconLightOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLightOn.png; sourceTree = "<group>"; };
+		53C5A423174288A0004C3F5A /* iconLightOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLightOff.png; sourceTree = "<group>"; };
 		53DA2FB917019DF700D9F167 /* ControlLabkDoorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkDoorViewController.h; sourceTree = "<group>"; };
 		53DA2FBA17019DF700D9F167 /* ControlLabkDoorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkDoorViewController.m; sourceTree = "<group>"; };
 		53DA2FBC17019FB500D9F167 /* ControlLabkWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkWindowViewController.h; sourceTree = "<group>"; };
@@ -336,8 +338,9 @@
 		53DA2FB71701949300D9F167 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				537CC5C7174142E500E3F7F0 /* iconLightOff.png */,
-				537CC5C8174142E500E3F7F0 /* iconLightOn.png */,
+				53C5A423174288A0004C3F5A /* iconLightOff.png */,
+				53C5A421174282A5004C3F5A /* iconLightOn.png */,
+				53C5A41B17427F7B004C3F5A /* iconStop.png */,
 				53295BCB173F9BFF0066F896 /* iconDown.png */,
 				53295BCC173F9BFF0066F896 /* iconUp.png */,
 				536155DF1702F1A5005E4D9D /* params.png */,
@@ -450,8 +453,9 @@
 				536155E01702F1A5005E4D9D /* params.png in Resources */,
 				53295BCD173F9BFF0066F896 /* iconDown.png in Resources */,
 				53295BCE173F9BFF0066F896 /* iconUp.png in Resources */,
-				537CC5C9174142E500E3F7F0 /* iconLightOff.png in Resources */,
-				537CC5CA174142E500E3F7F0 /* iconLightOn.png in Resources */,
+				53C5A41C17427F7B004C3F5A /* iconStop.png in Resources */,
+				53C5A422174282A5004C3F5A /* iconLightOn.png in Resources */,
+				53C5A424174288A0004C3F5A /* iconLightOff.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

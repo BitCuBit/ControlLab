@@ -20,6 +20,7 @@
     ControlLabWebViewDevice *aWebView;
     UIButton *buttonUp;
     UIButton *buttonDown;
+    UIButton *buttonStop;
 
     NSString *fullURL;
     NSURL *url;
@@ -100,12 +101,26 @@
 
             UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"iconDown.png"]];
             [buttonDown setImage:image forState:UIControlStateNormal];
-            buttonDown.frame = CGRectMake(50, 60, 60, 40);
+            buttonDown.frame = CGRectMake(25, 60, 60, 40);
             [[buttonDown layer] setCornerRadius:10];
             [buttonDown setClipsToBounds:YES];
             [[buttonDown layer] setBorderColor:
              [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
             [[buttonDown layer] setBorderWidth:2.75];
+
+            // BUTTON STOP
+
+            buttonStop = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [buttonStop addTarget:self action:@selector(pressedButtonStop:) forControlEvents:UIControlEventTouchUpInside];
+
+            image = [UIImage imageNamed:[NSString stringWithFormat:@"iconStop.png"]];
+            [buttonStop setImage:image forState:UIControlStateNormal];
+            buttonStop.frame = CGRectMake(120, 60, 60, 40);
+            [[buttonStop layer] setCornerRadius:10];
+            [buttonStop setClipsToBounds:YES];
+            [[buttonStop layer] setBorderColor:
+             [[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1] CGColor]];
+            [[buttonStop layer] setBorderWidth:2.75];
 
             // BUTTON UP
 
@@ -114,7 +129,7 @@
 
             image = [UIImage imageNamed:[NSString stringWithFormat:@"iconUp.png"]];
             [buttonUp setImage:image forState:UIControlStateNormal];
-            buttonUp.frame = CGRectMake(200, 60, 60, 40);
+            buttonUp.frame = CGRectMake(215, 60, 60, 40);
 
             [[buttonUp layer] setCornerRadius:10];
             [buttonUp setClipsToBounds:YES];
@@ -130,7 +145,7 @@
             [self.view addSubview:aWebView];
             [self.view addSubview:buttonDown];
             [self.view addSubview:buttonUp];
-        }
+            [self.view addSubview:buttonStop];        }
 
 
     }
@@ -142,6 +157,13 @@
     [aWebView getIdDevice:device];
 }
 
+- (IBAction)pressedButtonStop:(id)sender {
+    NSLog(@"Button Pressed Down");
+    fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/0"];
+    url = [NSURL URLWithString:fullURL];
+    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
+}
 
 - (IBAction)pressedButtonDown:(id)sender {
     NSLog(@"Button Pressed Down");
