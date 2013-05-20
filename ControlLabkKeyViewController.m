@@ -182,15 +182,36 @@
         [standardUserDefaults synchronize];
     }
 
-    [sender resignFirstResponder];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Saved Data" message:[NSString stringWithFormat:@"User: %@, Password: %@",usuario, password] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+- (void)pan:(UIPanGestureRecognizer *)gesture {
+    NSLog(@"Pan Gesture in View Key");
+
+
+}
+- (void)tap:(UIPanGestureRecognizer *)gesture {
+    NSLog(@"Tap Gesture in View Key");
+
+    [textFieldUser resignFirstResponder];
+
+
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    // Añado reconocimiento de arrastre de imagen
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [self.view addGestureRecognizer:panGesture];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [self.view addGestureRecognizer:tapGesture];
+
 }
 
 - (void)didReceiveMemoryWarning

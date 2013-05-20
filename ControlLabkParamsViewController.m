@@ -239,11 +239,19 @@
 
 }
 
+- (void)pan:(UIPanGestureRecognizer *)gesture {
+    NSLog(@"Pan Gesture in View Params");
+    
+    
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    // Añado reconocimiento de arrastre de imagen
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [self.view addGestureRecognizer:panGesture];
 
 }
 

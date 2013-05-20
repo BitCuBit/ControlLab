@@ -159,26 +159,6 @@
     connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
 }
 
-- (IBAction)flip:(id)sender {
-    if (onoff.on) {
-
-        fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/1"];
-        NSLog(@"Up");
-    }
-    else {
-
-        fullURL = [NSString stringWithFormat:@"%@/%@/%@", @"http://shanon.iuii.ua.es/s/rest/home/device", identify, @"write/moveBlind/2"];
-        NSLog(@"Down");
-    }
-    url = [NSURL URLWithString:fullURL];
-    requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
-
-    // create the connection with the request
-    // and start loading the data
-    connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
-
-
-}
 
 
 

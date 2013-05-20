@@ -59,18 +59,31 @@
 - (void) getIdDevice:(NSString*)device {
     NSLog(@"Device in web view: %@", device);
     if ([device isEqualToString:@"33"]) {
+        //        self.image = [UIImage imageNamed:@"simulate2.png"];
             url = [NSURL URLWithString:fullURL1];
+
+
     }
     else if ([device isEqualToString:@""]) {
         url = [NSURL URLWithString:fullURL3];
+        //        self.image = [UIImage imageNamed:@"simulate3.png"];
+
 
     }
-    else
+    else {
         url = [NSURL URLWithString:fullURL2];
+        //        self.image = [UIImage imageNamed:@"simulate1.png"];
+
+    }
+
     requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:30.0];
+
+
 
     // create the connection with the request
     // and start loading the data
+
+
     connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
 
     if (connection) {

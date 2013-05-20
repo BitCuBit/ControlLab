@@ -26,6 +26,9 @@
 		5334520D16CCFBFD00658AFB /* RIGHT_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520716CCFBFD00658AFB /* RIGHT_LIGHT_ON.png */; };
 		5334520E16CCFBFD00658AFB /* TOP_LIGHT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 5334520816CCFBFD00658AFB /* TOP_LIGHT_ON.png */; };
 		53353ED71730057700169229 /* ControlLabkKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53353ED61730057700169229 /* ControlLabkKeyViewController.m */; };
+		533CE0991744FC3F0009EC2A /* simulate1.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CE0961744FC3F0009EC2A /* simulate1.png */; };
+		533CE09A1744FC3F0009EC2A /* simulate2.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CE0971744FC3F0009EC2A /* simulate2.png */; };
+		533CE09B1744FC3F0009EC2A /* simulate3.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CE0981744FC3F0009EC2A /* simulate3.png */; };
 		53567C6F17311C0700F298FA /* ControlLabkParamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53567C6E17311C0700F298FA /* ControlLabkParamsViewController.m */; };
 		535D9BED16FB2F1200CC330C /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 535D9BEC16FB2F1200CC330C /* house.png */; };
 		535D9BF116FB2FE600CC330C /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 535D9BF016FB2FE600CC330C /* key.png */; };
@@ -95,6 +98,9 @@
 		5334520816CCFBFD00658AFB /* TOP_LIGHT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TOP_LIGHT_ON.png; sourceTree = "<group>"; };
 		53353ED51730057700169229 /* ControlLabkKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkKeyViewController.h; sourceTree = "<group>"; };
 		53353ED61730057700169229 /* ControlLabkKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkKeyViewController.m; sourceTree = "<group>"; };
+		533CE0961744FC3F0009EC2A /* simulate1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simulate1.png; sourceTree = "<group>"; };
+		533CE0971744FC3F0009EC2A /* simulate2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simulate2.png; sourceTree = "<group>"; };
+		533CE0981744FC3F0009EC2A /* simulate3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simulate3.png; sourceTree = "<group>"; };
 		53567C6D17311C0700F298FA /* ControlLabkParamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlLabkParamsViewController.h; sourceTree = "<group>"; };
 		53567C6E17311C0700F298FA /* ControlLabkParamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlLabkParamsViewController.m; sourceTree = "<group>"; };
 		535D9BEC16FB2F1200CC330C /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
@@ -236,13 +242,23 @@
 		533451C816CCF4C300658AFB /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				53DA2FC11701C31300D9F167 /* backgroundPopover.png */,
+				533CE0951744FC2E0009EC2A /* Simulate */,
 				53DA2FB8170194A500D9F167 /* Textures */,
 				53DA2FB71701949300D9F167 /* Icons */,
 				539C566C16D25B7C002448F2 /* DAIlogoLargeIcon_iPhone.png */,
 				539C566A16D25B2F002448F2 /* DAIlogoLargeIcon_iPad.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		533CE0951744FC2E0009EC2A /* Simulate */ = {
+			isa = PBXGroup;
+			children = (
+				533CE0961744FC3F0009EC2A /* simulate1.png */,
+				533CE0971744FC3F0009EC2A /* simulate2.png */,
+				533CE0981744FC3F0009EC2A /* simulate3.png */,
+			);
+			name = Simulate;
 			sourceTree = "<group>";
 		};
 		53567C6C173113A300F298FA /* CustomElementsToolBar */ = {
@@ -338,6 +354,7 @@
 		53DA2FB71701949300D9F167 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				53DA2FC11701C31300D9F167 /* backgroundPopover.png */,
 				53C5A423174288A0004C3F5A /* iconLightOff.png */,
 				53C5A421174282A5004C3F5A /* iconLightOn.png */,
 				53C5A41B17427F7B004C3F5A /* iconStop.png */,
@@ -456,6 +473,9 @@
 				53C5A41C17427F7B004C3F5A /* iconStop.png in Resources */,
 				53C5A422174282A5004C3F5A /* iconLightOn.png in Resources */,
 				53C5A424174288A0004C3F5A /* iconLightOff.png in Resources */,
+				533CE0991744FC3F0009EC2A /* simulate1.png in Resources */,
+				533CE09A1744FC3F0009EC2A /* simulate2.png in Resources */,
+				533CE09B1744FC3F0009EC2A /* simulate3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

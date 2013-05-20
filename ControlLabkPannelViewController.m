@@ -148,7 +148,6 @@
     connection = [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
 
 
-    //Do stuff here...
 }
 - (void) getIdentify:(NSString *)device {
     self->identify = device;
